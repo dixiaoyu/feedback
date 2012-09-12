@@ -92,13 +92,12 @@
     ul.domtabs a:visited,
     ul.domtabs a:active,
     ul.domtabs a:hover{
-      width:190px;
-      padding:10px .2em;
+      width:210px;
+      padding-top:10px; padding-bottom:10px;
       display:block;
-      background:#343338;
-      color:white;
+      color:red;
       text-align:center;
-      height:2em;
+      height:1.5em;
       text-decoration:none;
     }
       div.domtab-content {
@@ -132,7 +131,6 @@
   padding:15px;
   background:#211F20;
   width:620px;
-  height: 180px;
   overflow-y: auto;
 }
 .accordion_child table {

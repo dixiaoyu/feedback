@@ -1,12 +1,12 @@
 <!--Start of each accordion item-->
-  <div id="test1-header" class="accordion_headings" >Get Agent to Reply</div><!--Heading of the accordion ( clicked to show n hide ) -->
+  <div id="test-header1" class="accordion_headings header_highlight" >Get Agent to Reply</div><!--Heading of the accordion ( clicked to show n hide ) -->
   
   <!--Prefix of heading (the DIV above this) and content (the DIV below this) to be same... eg. foo-header & foo-content-->
   
-  <div id="test1-content"><!--DIV which show/hide on click of header-->
+  <div id="test-content1" style="display: none;"><!--DIV which show/hide on click of header-->
   
   	<!--This DIV is for inline styling like padding...-->
-    <div class="accordion_child">
+    <div class="accordion_child" style="height: 100px;">
         <form name="response" method="post" action="/create_response?type=forward" >
 		   <table>
 		   	<th></th><th>Company Name</th><th>Branch Name</th><th>Mr/Ms</th><th>First Name</th><th>Last Name</th>
@@ -37,7 +37,7 @@
 		    <table> 	
 		    <table>  
 		        <tr><td><%= hidden_field_tag(:case_id, @case_id)%></td></tr>	  	
-			    <tr><td><%= text_area_tag "content","",:autofocus => true%></td></tr>
+			    <tr><td><%= text_area "content","",:autofocus => true, "cols"=>70%></td></tr>
 			    <tr><td><%= submit_tag "Submit"%></td></tr></table>
 		</form>		
     </div>

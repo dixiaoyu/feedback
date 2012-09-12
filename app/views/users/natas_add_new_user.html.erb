@@ -14,7 +14,25 @@ return (true);
 </script>
 <!--<%= debug session%>
 <%= debug current_user %>-->
-<h1>Create New User</h1>
+   <div id="menu">
+    <ul>
+      <li><%= link_to "HOME", natas_home_path(:user_id=>current_user.user_id), :class=>"menu-active" %></li>
+      <li><%= link_to "CHANGE PASSWORD", reset_pwd_path %></li>
+      <li id="account"><span>WELCOME NATAS!</span><br /><%= link_to "LOG OUT", signout_path %></li>
+    </ul>
+   </div>
+ 
+   <div id="cols">
+    <div id="aside">
+      <ul>
+		<li><%= link_to " Feedback List", staff_view_case_path, :style=>"padding-left:50px; padding-right:60px;" %></li>
+		<% if current_user.level=="Senior"%>
+        <li><%= link_to "Add New Account", natas_add_new_user_path, :class=>"tab-active" %></li>
+        <% end %>
+	  </ul>
+    </div>
+    <div id="content">
+      <h1 id="em">Create New User</h1>
     <form name="form" action="/natas_create_new_user" method="post" onsubmit="return Blank_TextField_Validator()"> 
     <% if params[:error]=="user"%>
       Sorry, the user_id has been taken, please choose another one.
@@ -25,18 +43,19 @@ return (true);
     <% end%>
     <p id="demo" style="font-size:11px; color:red;"></p>	
       <p>* denotes compulsory fields. </p>
-      <table>
+      <table cellspacing="10" width="650px">
       	<tr><td>*User Name:</td><td><%= text_field_tag :user_id %></td><td>MR/MS:</td><td><%= select_tag(:gender, options_for_select([['MR', 1], ['MS', 2]])) %></td></tr>
       	<tr><td>*Password:</td><td><%= password_field_tag :pwd %></td><td>*Confirmation:</td><td><%= password_field_tag :re_pwd %></td></tr>
       	<tr><td>*First Name:</td><td><%= text_field_tag :first_name %></td><td>*Last Name:</td><td><%= text_field_tag :last_name %></td></tr>
        	<tr><td>*Email:</td><td><%= text_field_tag :email %></td><td>Contact:</td><td><%= text_field_tag :contact %></td></tr>
       	<tr><td>Title:</td><td><%= text_field_tag :title %></td><td>Authority:</td><td><%= select_tag(:level, options_for_select([['Junior', 1], ['Senior', 2]])) %></td></tr>
       	<tr><td>Point Of Contact</td><td><%= select_tag(:poc, options_for_select([['No', 1], ['Yes', 2]])) %></td></tr>
-      	<tr><td>User Group:</td></tr>
-      	<tr>
+      	<tr><td>User Group:</td>
       		<td><%= select_tag(:group, options_for_select(@groups.collect {|p| [ p.dept.strip(), p.id ] })) %></td>
       	</tr>
       </table>
        
-      <%= submit_tag "CREATE" %>
+      <p style="text-align: right; margin-right: 50px;"><%= submit_tag "CREATE" %></p>
     </form>
+    </div>
+   </div>

@@ -1,8 +1,15 @@
  
    <div id="menu">
     <ul>
+      <% groups=["admin","customer","natas"]%>
+      <% if current_user.user_group=="customer"%>
       <li><%= link_to "HOME", cus_home_path %></li>
       <li><%= link_to "PROFILE", cus_detail_path(:user_id=>current_user.user_id) %></li>
+      <% elsif current_user.user_group=="natas"%>
+      <li><%= link_to "HOME", natas_home_path(:user_id=>current_user.user_id) %></li>
+      <% elsif groups.include?(current_user.user_group)==false %>
+      <li><%= link_to "HOME", mbr_home_path(:user_id=>current_user.user_id) %></li>
+      <% end %>
       <li><%= link_to "CHANGE PASSWORD", reset_pwd_path %></li>
       <li id="account"><span>WELCOME CUSTOMER!</span><br /><%= link_to "LOG OUT", signout_path %></li>
     </ul>
@@ -11,8 +18,21 @@
    <div id="cols">
    	<div id="aside">
       <ul>
+      	<% groups=["admin","customer","natas"]%>
+        <% if current_user.user_group=="customer"%>
 		<li><%= link_to "Outstanding Case", case_show_path, :class=>"tab-active" %></li>
 		<li><%= link_to "Add new feedback", cus_new_case_path %></li>
+		<% elsif current_user.user_group=="natas"%>
+		  <li><%= link_to " Feedback List", staff_view_case_path, :style=>"padding-left:50px; padding-right:60px;" %></li>
+		  <% if current_user.level=="Senior"%>
+          <li><%= link_to "Add New Account", natas_add_new_user_path %></li>
+          <% end %>
+        <% elsif groups.include?(current_user.user_group)==false %>
+          <li><%= link_to " Feedback List", staff_view_case_path, :style=>"padding-left:50px; padding-right:60px;" %></li>
+		  <% if current_user.level=="Senior"%>
+          <li><%= link_to "Add New Account", natas_add_new_user_path(:group=>"member") %></li>
+          <% end %>
+        <% end %>
 	  </ul>
     </div>
    
@@ -40,6 +60,35 @@
 
  
     <div id="basic-accordian" ><!--Parent of the Accordion-->
+    	<script>
+  	$(document).ready(function(){
+      $("#test-header4").click(function(){
+       $("#test-content4").slideToggle("fast");
+       $("#test-content1").css("display","none");
+       $("#test-content2").css("display","none");
+       $("#test-content3").css("display","none");
+      });
+      $("#test-header3").click(function(){
+       $("#test-content3").slideToggle("fast");
+       $("#test-content1").css("display","none");
+       $("#test-content2").css("display","none");
+       $("#test-content4").css("display","none");
+      });
+      $("#test-header2").click(function(){
+       $("#test-content2").slideToggle("fast");
+       $("#test-content1").css("display","none");
+       $("#test-content4").css("display","none");
+       $("#test-content3").css("display","none");
+      });
+      $("#test-header1").click(function(){
+       $("#test-content1").slideToggle("fast");
+       $("#test-content4").css("display","none");
+       $("#test-content2").css("display","none");
+       $("#test-content3").css("display","none");
+      });
+    });
+     </script>
+    	
      <% groups=["admin","customer","natas"]%>
      <% if current_user.user_group=="customer"%>
      <%= render "processings/cus_reply"%>
