@@ -1,0 +1,145 @@
+﻿body {background:url("design/Home-BG.png") 185px top no-repeat; color: White; font:16px Verdana; height:880px;}
+
+#main {}
+#menu {padding:15px 15px 13px 15px; background:url("design/MenuBar.png") 177px 10px no-repeat; width:1130px;}
+#menu ul {margin:6px 10px 6px 300px; padding-bottom:30px;}
+#menu li {float:left; list-style-type:none; padding-left: 40px;}
+#menu li a {color:#B5B5B5; text-decoration:none;}
+#menu li a:hover {color:White;}
+#menu li#account {margin-left:595px; margin-top:-25px; text-align:right; font-size:12px;}
+#menu li span {color:#D1722B;}
+#menu li a.menu-active {color:White;}
+
+#cols {position:relative; margin:0 195px; padding:16px 10px; background:url("design/Content-BG.png") center top no-repeat; width:940px; height:610px;}
+#aside { margin-left:-35px; float:left; font-size:18px;}
+#aside li { list-style-type:none; margin:0 0 10px 0; padding:5px;}
+#aside a {color:#93858A; width:280px; padding:8px 40px 8px 20px; background:url("design/Tab-BG.png") 0 0 no-repeat; text-decoration:none;}
+#aside a:hover {background-position:0 -37.5px; color:White;}
+#aside a:active {background-position:0 -37.5px; color:White;}
+#aside a.tab-active {background-position:0 -37.5px; color:White;}
+
+#content {background:url("design/ContentTab.png") 0px 0px no-repeat; overflow:hidden; height:520px;
+          padding-left: 10px; font-size:14px; width: 670px;}
+#content h1 {font-size:150%;}
+#content h4 {font-size:100%;}
+#content h4 span {font-weight:normal; color:#93858A;}
+#content p {color:#93858A;}
+#content hr {border:1px solid white; margin-left:-14px; width:640px;}
+#content div#reply-group {overflow:auto; height:460px; width:645px;}
+#content div.reply hr {border:1px dashed white;}
+
+#content h1#em {background-color:black; padding:10px 0 10px 10px; margin:10px 15px 10px 0;}
+#content form#caselist hr {border:1px dashed white;}
+#content form#caselist {background-color:#343338; width:635px; height:400px; overflow:auto; margin-top:-40px; padding:10px;}
+#content form#caselist table {padding-bottom:40px; margin-left:10px; margin-top:10px; width:590px; border-bottom:dashed 1px white;}
+#content form#caselist table a {color:#AA252B;}
+#content form#caselist table a:hover {color:Black;}
+
+#content .feedback {margin:0px 5px; color:#B5B5B5; width:620px;}
+#content .feedback td {padding:5px;}
+#content .feedback p {color:red; font-size:11px; text-align:right; padding-right:40px; margin-top:-15px;}
+#content .feedback table {}
+#content .feedback .btn {background:url("design/Button-BG.png") 0 0 no-repeat; padding:5px 25px;}
+#content .feedback .btn a {color:#878787; text-decoration:none;}
+#content .feedback .btn a:hover {color:Red;}
+#content .feedback td.newcase {padding-left:135px;}
+
+#content #profile {width:650px; color:#878787;}
+#content #profile td {padding:15px;}
+#content #profile .btn {background:url("design/Button-BG.png") 0 0 no-repeat; padding:5px 25px; margin-left:520px;}
+#content #profile .btn a {color:#878787; text-decoration:none;}
+#content #profile .btn a:hover {color:Red;}
+#content #profile td.show {color:White;}
+
+#content #password {width:650px; color:#878787;}
+#content #password td {padding:15px;}
+#content #password td#move {padding-left:223px;}
+#content #password .btn {background:url("design/Button-BG.png") 0 0 no-repeat; padding:5px 25px;}
+#content #password .btn a {color:#878787; text-decoration:none;}
+#content #password .btn a:hover {color:Red;}
+
+#content #view_case form {overflow-y:auto;}
+
+#btn {background:url("design/Button-BG.png") 0 0 no-repeat; padding:0px 10px;}
+#btn a {color:black; text-decoration:none; font-size:14px;}
+
+
+    .domtab {
+    background:#343338;
+    width:650px;
+    margin-top: -10px;
+    }
+    ul.domtabs {
+    margin-left:-35px;
+    }
+    ul.domtabs li{
+    float:left;
+    background:#343338;
+    color:white;
+    list-style-type: none;
+    font-size:16px;
+    }
+    ul.domtabs a:link {
+    background:#211F20;
+    color:white;
+    width:210px;
+    padding-top:10px; padding-bottom:10px;
+    display:block; 
+    text-align:center;
+    height:1.5em;
+    text-decoration:none;   	
+    }
+    ul.domtabs a:visited,
+    ul.domtabs a:active,
+    ul.domtabs a:hover{
+      width:190px;
+      padding:10px .2em;
+      display:block;
+      background:#343338;
+      color:white;
+      text-align:center;
+      height:2em;
+      text-decoration:none;
+    }
+      div.domtab-content {
+      clear:both;
+      width:565px;
+      height:200px;
+      overflow-y:auto;
+      padding:1em 3em;
+    }
+      
+#basic-accordian{
+  padding-top:5px;
+  width:650px;
+  height:200px;
+  z-index:2;
+}
+
+.accordion_headings{
+  padding:5px;
+  background:#211F20;
+  color:white;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.accordion_headings:hover{
+  background:#343338;
+}
+
+.accordion_child{
+  padding:15px;
+  background:#211F20;
+  width:620px;
+  height: 180px;
+  overflow-y: auto;
+}
+.accordion_child table {
+  width:610px;
+  font-size:13px;
+  text-align:center;
+}
+.header_highlight{
+  background:#343338;
+}

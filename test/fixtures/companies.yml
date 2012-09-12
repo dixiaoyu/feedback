@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  coy: MyString
+  company_id: MyString
+  company_name: MyString
+
+two:
+  coy: MyString
+  company_id: MyString
+  company_name: MyString

@@ -1,0 +1,19 @@
+<h1>Staff Lists</h1>
+<form name="form" method="post" action="/response_new?case_id=<%= params[:case_id]%>&type=forward_in&staff=1" >   
+<table><th></th><th>Mr/Ms</th><th>First Name</th><th>Last Name</th><th>Title</th><th>Responsible Compalint</th>
+	<% @staffs.each_with_index do |staff,index| %>   
+    <% if index==0
+      checked = true
+    else
+      checked = false
+    end %>
+   <tr><td><%= radio_button_tag(:related, staff.user_id, checked) %></td>
+   	   <td><%= staff.gender%></td>
+	   <td><%= staff.first_name%></td>
+	   <td><%= staff.last_name%></td>
+	   <td><%= staff.title%></td>
+	   <td><%= staff.type_of_feedback%></td></tr>
+	<% end %>   
+	<tr><td><%= link_to "Back",response_new_path(:case_id=>params[:case_id],:type=>"forward_in")%></td><td><%= submit_tag "Confirm"%></td></tr>	  
+</table>
+</form>

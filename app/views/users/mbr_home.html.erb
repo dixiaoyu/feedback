@@ -1,0 +1,7 @@
+<%= link_to "Home page", mbr_home_path(:user_id=>current_user.user_id) %><br />
+<% if current_user.level=="Senior"%>
+<%= link_to "Add New Account", natas_add_new_user_path(:group=>"member") %><br />
+<% end %>
+<%= link_to "Reset Password", reset_pwd_path %><br />
+<%= link_to "Feedback",staff_view_case_path %>
+

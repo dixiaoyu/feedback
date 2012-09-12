@@ -1,0 +1,57 @@
+   <div id="menu">
+    <ul>
+      <li><%= link_to "HOME", cus_home_path %></li>
+      <li><%= link_to "PROFILE", cus_detail_path(:user_id=>current_user.user_id) %></li>
+      <li><%= link_to "CHANGE PASSWORD", reset_pwd_path %></li>
+      <li id="account"><span>WELCOME CUSTOMER!</span><br /><%= link_to "LOG OUT", signout_path %></li>
+    </ul>
+   </div>
+ 
+   <div id="cols">
+    <div id="aside">
+      <ul>
+		<li><%= link_to "Outstanding Case", cus_home_path %></li>
+		<li><%= link_to "Add new feedback", cus_new_case_path, :class=>"tab-active" %></li>
+	  </ul>
+    </div>
+
+    <div id="content">
+     <h1 id="em">Agency</h1>
+    <% if params[:case_id]!=nil && params[:direct].nil?%>
+      <form name="agency" method="post" action="/case_edit?status=1" style="overflow-y: auto;" >
+      	<%= hidden_field_tag(:case_id, params[:case_id])%>   
+    <% else %>
+      <form name="agency" method="post" action="/cus_new_case?status=1" style="overflow-y: auto;">
+    <% end %>  
+   
+    <table width="650px" style="text-align: center; font-size: 16px;" cellspacing="10" cellpadding="10">  
+    	<tr><th></th>
+    	<th>Agency Name</th>  	
+    	<th>Branch/Department Name</th></tr>
+    	
+       <% @agencies.each_with_index do |agency,index| %>      		   	      
+                <% if index==0
+			      checked = true
+			    else
+			      checked = false
+			    end
+	             %>
+	   <% if agency.branch_id.nil?
+	        agency_id=agency.company_id+"@"
+	      else
+	      	agency_id=agency.company_id+"@"+agency.branch_id    
+	      end	
+	   %>          
+       <tr><td><%= radio_button_tag(:member, agency_id, checked) %></td><td><%= agency.company_name%></td><td><%= agency.branch_name%></td></tr>
+       <% end %>
+       <% if params[:direct]=="forward"%>
+         <tr><td><a href="/response_new?case_id=<%= params[:case_id]%>&type=forward">Back</a></td><td ><%= submit_tag "Send" %></td></tr>
+       <% else %>  
+         <tr><td colspan="3" style="text-align: right;"><span id="btn"><a href="cus_new_case">Back</a></span>&nbsp;&nbsp;<%= submit_tag "Send" %></td></tr>
+       <% end %>  
+    </table>
+    </form>
+    
+   </div>   
+   
+   </div><!--end of cols -->

@@ -1,0 +1,41 @@
+   <div id="menu">
+    <ul>
+      <li><%= link_to "HOME", cus_home_path %></li>
+      <li><%= link_to "PROFILE", cus_detail_path(:user_id=>current_user.user_id), :class=>"menu-active" %></li>
+      <li><%= link_to "CHANGE PASSWORD", reset_pwd_path %></li>
+      <li id="account"><span>WELCOME CUSTOMER!</span><br /><%= link_to "LOG OUT", signout_path %></li>
+    </ul>
+   </div>
+   
+   <div id="cols">
+    <div id="aside">
+      <ul>
+		<li><%= link_to "Outstanding Case", cus_home_path %></li>
+		<li><%= link_to "Add new feedback", cus_new_case_path%></li>
+	  </ul>
+    </div>
+    
+    <div id="content">
+    	<h1 id="em">Personal Information</h1>
+     <%= form_for(:users,:url=>cus_update_path(:user_id=>current_user.user_id)) do |f| %>
+     <table id="profile">
+       <tr><td>Username:</td><td><%= current_user.user_id %></td>
+       	   <td>Gender:</td>
+       	   <td><% if @user.gender=='Ms' %>
+		    <%   key = 1 %>
+		    <% else %>
+		    <%   key= 2 %>
+		    <% end %>   
+       <%= select_tag(:gender, options_for_select([['Ms', 1], ['Mr', 2]],key)) %> </td></tr>
+       <tr><td>First Name:</td><td colspan="3"><%= f.text_field :first_name ,:value=>current_user.first_name, :size=>"40"%></td></tr>
+       <tr><td>Last Name:</td><td colspan="3"><%= f.text_field :last_name , :value=>current_user.last_name,:size=>"40"%></td></tr>
+       <tr><td>Mobile No:</td colspan="3"><td><%= f.text_field :contact ,:value=>current_user.contact, :size=>"40"%></td></tr>
+       <tr><td>Email:</td><td colspan="3"><%= f.text_field :email ,:value=>current_user.email,:size=>"40" %></td></tr>
+       <tr><td>Address:</td><td colspan="3"><%= f.text_field :address ,:value=>current_user.address, :size=>"40"%></td></tr>
+       <tr><td colspan="4" style="text-align:right;"><%= submit_tag "Update" %></td></tr>
+     </table>
+     <% end %>
+     
+    </div><!-- end of content -->
+    
+  </div><!--end of cols -->

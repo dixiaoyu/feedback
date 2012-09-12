@@ -1,0 +1,41 @@
+<!--<script type="text/javascript">
+function hideshow(which){
+if (!document.getElementById)
+return
+if (which.style.display=="block")
+which.style.display="none"
+else
+which.style.display="block"
+}
+</script>-->
+<%= form_for(:cases, :url=>case_show_path(:type=>"filter")) do |f| %>
+  <% if params[:type]=="filter"%>
+    <%key=params[:nature]%>
+    Category: <%= select_tag(:nature, options_for_select(CaseCategory.all.collect {|p| [ p.name.strip(), p.id ] },key)) %> 
+  <% else%>
+    Category: <%= select_tag(:nature, options_for_select(CaseCategory.all.collect {|p| [ p.name.strip(), p.id ] })) %>
+  <% end %>  
+    <%= f.submit "Filter" %>
+<% end %><br /><br /><br />
+
+
+<form name="form" action="/natas_select_staff" method="post"" id="caselist">	
+		
+	<% if @cases.count!=0 %>
+	    <% @cases.each do |one| %>
+	    <table><tr><% if one.status=="0"%><td>NEW</td>
+	    	<% elsif one.status=="1"%><td>Processing</td>		
+	    	<% elsif one.status=="2"%><td>Finished</td>
+            <% end %>             
+            <td><%= one.content %></td></tr>
+        <% response=Processing.find(:all,:conditions=>["response_to=? and case_id=?",current_user.user_id,one.case_id]).count%>    
+	    <tr><td><%= link_to one.case_id, case_processing_path(:case_id=>one.case_id)%></td></tr>
+	    <tr><td><%= response %></td>
+	    	<td>Created by <%= one.created_by %> on <%= one.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>	    	
+	    	</tr></table>	<br /><br />
+		<% end %>		
+	<% else %>	
+	  There is no outstanding case!
+	<% end %>
+	    
+</form>	

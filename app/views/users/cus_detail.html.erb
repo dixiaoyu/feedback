@@ -1,0 +1,31 @@
+   <div id="menu">
+    <ul>
+      <li><%= link_to "HOME", cus_home_path %></li>
+      <li><%= link_to "PROFILE", cus_detail_path(:user_id=>current_user.user_id), :class=>"menu-active" %></li>
+      <li><%= link_to "CHANGE PASSWORD", reset_pwd_path %></li>
+      <li id="account"><span>WELCOME CUSTOMER!</span><br /><%= link_to "LOG OUT", signout_path %></li>
+    </ul>
+   </div>
+   
+   <div id="cols">
+    <div id="aside">
+      <ul>
+		<li><%= link_to "Outstanding Case", cus_home_path %></li>
+		<li><%= link_to "Add new feedback", cus_new_case_path%></li>
+	  </ul>
+    </div>
+    
+    <div id="content">
+    	<h1 id="em">Personal Information</h1>
+     <table id="profile">
+       <tr><td class="show">First Name:</td><td><%= @user.first_name %></td><td class="show">Last Name:</td><td><%= @user.last_name %></td></tr>
+       <tr><td class="show">Gender:</td><td><%= @user.gender%></td><td class="show">Mobile No:</td><td><%= @user.contact%></td></tr>
+       <tr><td class="show">Email:</td><td colspan="3"><%= @user.email%></td></tr>
+       <tr><td class="show">Address:</td><td colspan="3"><%= @user.address%></td></tr>
+       <tr><td colspan="4" style="font-size: 14px; color: red;">Please click "Edit" to complete your personal information!</td></tr>
+       <tr><td colspan="4"><span class="btn"><%= link_to "Edit", cus_edit_path(:user_id=>@user.user_id) %></span></td></tr>
+     </table>
+     
+    </div><!-- end of content -->
+    
+  </div><!--end of cols -->

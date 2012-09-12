@@ -1,0 +1,23 @@
+    <div class="col1">  
+      <h3>Login-in to your account</h3><hr />
+      <%= form_for(:session, :url=>sessions_path) do |f| %>
+      <table cellspacing="7px">
+        <tr><td>Username:</td><td colspan="3"><%= f.text_field :user_id%></td></tr>
+        <tr><td>Password:</td><td colspan="3"><%= f.password_field :password %></td></tr>
+        <tr><td colspan="4"><%= check_box_tag 'remember'%>Remember me</td></tr>
+        <tr><td class="small" colspan="2"><a href="#">Forget your password?</a></td>
+        	<td id="loginbtn" colspan="2"><%= image_submit_tag "Design/Login-Button.png" %></td></tr>
+        <tr><td colspan="4" style="font-size:14px; color: black;"><% flash.each do |key, value| %>
+	                        <div class="flash <%= key %>"><%= value %></div>
+	                        <% end %></td></tr>
+      </table>
+      <% end %>
+    </div>
+     
+    <div class="col2"> 
+      <h3>Create an account</h3><hr />
+      <p>WE ARE COMMITTED TO PROFESSIONALISM. ALWAYS SERVING MEMBERS TO THE BEST OF OUR ABILITY</p><br />
+      <p class="small">Don't have an account yet?</p>
+      <span id="signupbtn"><%= link_to "SIGN UP", signup_path %></span>    
+    </div>
+    

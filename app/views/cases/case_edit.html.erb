@@ -1,0 +1,53 @@
+<script Language="JavaScript">
+<!-- 
+function Blank_TextField_Validator()
+{
+if (form.title.value == "")
+{
+  document.getElementById("demo").innerHTML="Please enter your title!(Maximum 5000 characters)"
+   form.title.focus();
+   return (false);
+}	
+if (form.agency_name.value == "")
+{
+  document.getElementById("demo").innerHTML="Please enter agency name!(Maximum 5000 characters)"
+   form.agency_name.focus();
+   return (false);
+}
+if (form.complaint.value == "")
+{
+  document.getElementById("demo").innerHTML="Please enter your complaint!(Maximum 5000 characters)"
+   form.complaint.focus();
+   return (false);
+}
+
+return (true);
+}
+-->
+</script>
+<h1>Edit Case</h1>
+    
+    <form name="form" action="/case_update?id=<%=@case.case_id%>" method="post" onsubmit="return Blank_TextField_Validator()">  
+    <table>
+    	<tr style="background: grey; font-size: 14px; color: white;"><td>Travel Agency</td></tr>
+    	
+    	<% if @status=="1" %>
+	    	<tr><td>Name</td><td><%= text_field_tag :company_name, @company_name %></td><td><a href="/cus_get_agency?case_id=<%= @case.case_id%>">Get Current Agent</a></td></tr>
+	    	<tr><td>Branch/Dptm</td><td><%= text_field_tag :branch_name, @branch_name %></td></tr>	  
+	    	<%= hidden_field_tag(:company_id, @company_id)%>
+	    	<%= hidden_field_tag(:branch_id, @branch_id)%>  	
+    	<% else %>
+	    	<tr><td>Name</td><td><%= text_field_tag :company_name, @case.company_name  %></td><td><a href="/cus_get_agency?case_id=<%= @case.case_id%>">Get Current Agent</a></td></tr>
+	    	<tr><td>Branch/Dptm</td><td><%= text_field_tag :branch_name ,@case.branch_name%></td></tr>
+    	<% end %>
+		<tr><td>Title:</td><td><%=text_field_tag :title, @case.title%></td></tr>	
+		<tr><td>Nature Of Complaint:</td>
+		<% key = CaseCategory.find_by_name(@case.category).id %>			
+	    <td><%= select_tag(:nature, options_for_select(CaseCategory.all.collect {|p| [ p.name.strip(), p.id ] },key)) %></td></tr>
+    	<tr><td>Date Of Incident:</td><td><%=date_select "incident","user",:start_year=>2010, :end_year=>Time.now.year.to_i, :default=>{:year=>@case.incident_date.to_date.year,:month=>@case.incident_date.to_date.month,:day=>@case.incident_date.to_date.day}%></td></tr>
+		<tr><td>Complaint:</td><td><%= text_field_tag :content ,@case.content%></td></tr>
+	        <p id="demo" style="font-size:11px; color:red;"></p>
+        <tr><td><%= submit_tag "Send" %></td></tr>
+    </table>
+    
+    </form>

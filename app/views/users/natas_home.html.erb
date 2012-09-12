@@ -1,0 +1,33 @@
+<!--<%= debug session%>
+<%= debug current_user %>-->
+   <div id="menu">
+    <ul>
+      <li><%= link_to "HOME", natas_home_path(:user_id=>current_user.user_id), :class=>"menu-active" %></li>
+      <li><%= link_to "CHANGE PASSWORD", reset_pwd_path %></li>
+      <li id="account"><span>WELCOME NATAS!</span><br /><%= link_to "LOG OUT", signout_path %></li>
+    </ul>
+   </div>
+ 
+   <div id="cols">
+    <div id="aside">
+      <ul>
+		<li><%= link_to " Feedback List", staff_view_case_path, :style=>"padding-left:50px; padding-right:60px;" %></li>
+		<% if current_user.level=="Senior"%>
+        <li><%= link_to "Add New Account", natas_add_new_user_path %></li>
+        <% end %>
+	  </ul>
+    </div>
+    <div id="content">
+      <h1 id="em">Feedback List</h1>
+      <% if current_user.poc=="Y"%>
+      <% count=Case.find_by_sql("select * from cases where status='0'").count %>
+      There is/are <strong><%= link_to count, staff_view_case_path %></strong> feedback(s)
+      <% end %>
+    </div>   
+   
+   </div><!--end of cols -->
+
+<!--<%= link_to "Outstanding Case", case_show_path %><br />
+<%= link_to "Feedback", cus_new_feedback_path %>-->
+<%= debug current_user %> 
+

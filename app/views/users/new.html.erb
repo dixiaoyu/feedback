@@ -1,0 +1,48 @@
+<script language=Javascript>  
+function verifyEmail(){
+var status = false;     
+var emailRegEx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+     if (document.myform.email.value.search(emailRegEx) == -1) {
+          alert("Please enter a valid email address.");
+          status = false;
+     }
+
+     else {
+          
+          status = true;
+     }
+     return status;
+}
+</script> 
+
+<div id="signin">
+    <div class="col1">  
+      <h3>Sign up an account</h3><hr />
+      <form name="myform" method="POST" action="/cus_create" onSubmit="return verifyEmail()">
+      <table>
+      	<tr><td colspan="2">
+      		<%= render 'shared/error_messages' %>
+              <% if params[:p]=="nm"%>
+              <%= "Password confirmation doesn't match!"%>
+            <% elsif params[:p]=="ts"%>
+              <%= "Password length is less than 6 characters!"%>
+            <% end %></td></tr>
+        <tr><td>Username:</td><td><%= text_field_tag :user_id %></td></tr>
+        <tr><td>Password:<br /><span class="small">(Maximum of 6 characers)</span></td><td><%= password_field_tag :password %></td></tr>
+        <tr><td>Re-type password:</td><td><%= password_field_tag :password_confirmation %></td></tr>
+        <tr><td>Email Address:</td><td><%= text_field_tag :email,'' %></td></tr>
+        <tr><td colspan="2" id="submitbtn"><%= image_submit_tag "Design/Submit-Button.png" %></td></tr>
+      </table>
+      </from>
+    </div>
+     
+    <div class="col2"> 
+      <h3>Notice:</h3><hr />
+      <p>YOU ARE CURRENTLY SIGNING UP AS A CUSTOMER</p><br />
+      <p class="small">Already registered?</p>
+      <p><a href="#"> Forgot your password?</a></p>
+      <span id="signupbtn"><%= link_to "LOG-IN", signin_path %></span>    
+    </div>
+    
+</div>
+   

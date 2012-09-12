@@ -1,0 +1,35 @@
+
+    <div id="aside">
+      <ul>
+		<li><%= link_to "Outstanding Case", cus_home_path %></li>
+		<li><%= link_to "Add new feedback", cus_new_case_path, :class=>"tab-active" %></li>
+	  </ul>
+    </div>
+   
+    <div id="content">
+    	<h1>TRAVEL AGENCY</h1>
+     <form name="form" action="/cus_create_case" method="post" onsubmit="return Blank_TextField_Validator()">
+       <table class="feedback">
+       	<% if @status=="1" %>
+	    	<tr><td>Name:</td><td><%= text_field_tag :company_name, @company_name %><a href="/cus_get_agency" style="float: right; font-size: 14px; color: red; text-decoration: none;">Get Current Agent</a></td></tr>
+	    	<tr><td>Branch/Department:</td><td><%= text_field_tag :branch_name, @branch_name %></td></tr>	  
+	    	<%= hidden_field_tag(:company_id, @company_id)%>
+	    	<%= hidden_field_tag(:branch_id, @branch_id)%>  	
+    	<% else %>
+	    	<tr><td>Name:</td><td><%= text_field_tag :company_name %><a href="/cus_get_agency" style="float: right; font-size: 14px; color: red; text-decoration: none;">Get Current Agent</a></td></tr>
+	    	<tr><td>Branch/Department:</td><td><%= text_field_tag :branch_name %></td></tr>
+    	<% end %>
+		<tr><td>Title:</td><td><%= text_field_tag :title%></td></tr>
+    	<tr><td style="width:260px;">Nature Of Complaint:</td>
+    	    <td><%= select_tag(:nature, options_for_select(CaseCategory.all.collect {|p| [ p.name.strip(), p.id ] })) %></td></tr>
+		<tr><td>Date Of Incident:<br />DD/MM/YYYY</td><td><%=date_select "incident","user",:start_year=>2010, :end_year=>Time.now.year.to_i, :default=>100.years.from_now%></td></tr>
+        <tr><td colspan="2">Description:</td></tr>
+        <tr><td colspan="2"><%= text_area_tag :complaint, nil,:style=>"width:560px; height:180px; overflow:hidden;" %></td></tr>
+        <tr><td><%= submit_tag "SEND" %></td>
+			<td><p>Please do not exceed 1000 words</p></td>
+		</tr>
+	  </table>
+	 </form>
+    </div><!-- end of content -->
+    
+  

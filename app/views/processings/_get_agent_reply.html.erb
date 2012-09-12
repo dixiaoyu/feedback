@@ -1,0 +1,46 @@
+<!--Start of each accordion item-->
+  <div id="test1-header" class="accordion_headings" >Get Agent to Reply</div><!--Heading of the accordion ( clicked to show n hide ) -->
+  
+  <!--Prefix of heading (the DIV above this) and content (the DIV below this) to be same... eg. foo-header & foo-content-->
+  
+  <div id="test1-content"><!--DIV which show/hide on click of header-->
+  
+  	<!--This DIV is for inline styling like padding...-->
+    <div class="accordion_child">
+        <form name="response" method="post" action="/create_response?type=forward" >
+		   <table>
+		   	<th></th><th>Company Name</th><th>Branch Name</th><th>Mr/Ms</th><th>First Name</th><th>Last Name</th>
+			<% @agent_pocs.each_with_index do |poc,index| %> 
+			<% if index==0%>
+			  <% checked=true %>
+			<% else %>
+			  <% checked=false %>
+			<% end %>
+			<tr><td><%= radio_button_tag(:response_to, poc.user_id, checked)%></td>
+				<td><%= poc.company_name%></td>
+				<td><%= poc.branch_name%></td>
+				<td><%= poc.gender%></td>
+				<td><%= poc.first_name%></td>
+				<td><%= poc.last_name%></td></tr>
+			<% end %>	
+			<% @agent_others.each do |staff| %> 
+			  <% if staff.user_id !=@agent_pocs.first.user_id%>
+		   <tr><td><%= radio_button_tag(:response_to, staff.user_id) %></td>
+		   	   <td><%= staff.company_name%></td>
+		   	   <td><%= staff.branch_name%></td>
+		   	   <td><%= staff.gender%></td>
+			   <td><%= staff.first_name%></td>
+			   <td><%= staff.last_name%></td></tr>
+			  <% end %>
+			<% end %> 		  
+		   </table><br />
+		    <table> 	
+		    <table>  
+		        <tr><td><%= hidden_field_tag(:case_id, @case_id)%></td></tr>	  	
+			    <tr><td><%= text_area_tag "content","",:autofocus => true%></td></tr>
+			    <tr><td><%= submit_tag "Submit"%></td></tr></table>
+		</form>		
+    </div>
+    
+  </div>
+<!--End of each accordion item--> 

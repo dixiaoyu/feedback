@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  coy: MyString
+  case_id: MyString
+  incident_date: 2012-08-29 16:06:15
+  content: MyText
+
+two:
+  coy: MyString
+  case_id: MyString
+  incident_date: 2012-08-29 16:06:15
+  content: MyText

@@ -1,0 +1,76 @@
+ 
+   <div id="menu">
+    <ul>
+      <li><%= link_to "HOME", cus_home_path %></li>
+      <li><%= link_to "PROFILE", cus_detail_path(:user_id=>current_user.user_id) %></li>
+      <li><%= link_to "CHANGE PASSWORD", reset_pwd_path %></li>
+      <li id="account"><span>WELCOME CUSTOMER!</span><br /><%= link_to "LOG OUT", signout_path %></li>
+    </ul>
+   </div>
+   
+   <div id="cols">
+   	<div id="aside">
+      <ul>
+		<li><%= link_to "Outstanding Case", case_show_path, :class=>"tab-active" %></li>
+		<li><%= link_to "Add new feedback", cus_new_case_path %></li>
+	  </ul>
+    </div>
+   
+   <div id="content">
+
+    <div class="domtab">
+	 <ul class="domtabs">
+		<li><a href="#what">Detail</a></li>
+		<li style="margin-left: 5px;"><a href="#how">Attach</a></li>
+		<li style="margin-left: 5px;"><a href="#fl">Follow Up</a></li>
+	 </ul>
+	<div class="domtab-content">
+		<a href="what" id="what"></a>
+		<p><%= render "cases/case_detail_info"%></p>
+		</div>
+	<div class="domtab-content">
+		<a href="how" id="how"></a>
+		<p>Content</p>
+	</div>
+	<div class="domtab-content">
+		<a href="fl" id="fl"></a>
+		<p><%= render "processings/case_response"%></p>
+	</div>
+   </div><!-- end of domtab -->
+
+ 
+    <div id="basic-accordian" ><!--Parent of the Accordion-->
+     <% groups=["admin","customer","natas"]%>
+     <% if current_user.user_group=="customer"%>
+     <%= render "processings/cus_reply"%>
+
+     <% elsif current_user.user_group=="natas"%>	
+      <%= render "processings/get_agent_reply"%>
+      <%= render "processings/get_infor_from_natas"%>
+	  <%= render "processings/reply_to_customer"%>
+	  <%= render "processings/add_comment"%>
+     <% elsif groups.include?(current_user.user_group)==false %>
+      <%= render "processings/reply_to_natas"%>
+      <%= render "processings/get_infor_from_agent"%>
+	  <%= render "processings/reply_to_customer"%>
+	  <%= render "processings/add_comment"%>
+     <% end %>
+
+    </div><!--End of accordion parent-->
+    
+   </div><!-- end of content -->
+  </div><!-- end of cols -->
+   
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

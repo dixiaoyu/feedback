@@ -1,0 +1,42 @@
+<script Language="JavaScript">
+<!-- 
+function Blank_TextField_Validator()
+{
+if (form.user_id.value.empty == ""||form.email.value=="" ||form.first_name.value=="" || form.last_name.value=="" || form.password.value=="")
+{
+  document.getElementById("demo").innerHTML="Please enter compulsory fields!"
+   form.user_id.focus();
+   return (false);
+}
+return (true);
+}
+-->
+</script>
+<!--<%= debug session%>
+<%= debug current_user %>-->
+<h1>Create New User</h1>
+    <form name="form" action="/natas_create_new_user" method="post" onsubmit="return Blank_TextField_Validator()"> 
+    <% if params[:error]=="user"%>
+      Sorry, the user_id has been taken, please choose another one.
+    <% elsif params[:error]=="length"%>
+      The length of password must be more than 6 characters
+    <% elsif params[:error]=="pwd"%> 
+      Your password confirmation doesn't match 
+    <% end%>
+    <p id="demo" style="font-size:11px; color:red;"></p>	
+      <p>* denotes compulsory fields. </p>
+      <table>
+      	<tr><td>*User Name:</td><td><%= text_field_tag :user_id %></td><td>MR/MS:</td><td><%= select_tag(:gender, options_for_select([['MR', 1], ['MS', 2]])) %></td></tr>
+      	<tr><td>*Password:</td><td><%= password_field_tag :pwd %></td><td>*Confirmation:</td><td><%= password_field_tag :re_pwd %></td></tr>
+      	<tr><td>*First Name:</td><td><%= text_field_tag :first_name %></td><td>*Last Name:</td><td><%= text_field_tag :last_name %></td></tr>
+       	<tr><td>*Email:</td><td><%= text_field_tag :email %></td><td>Contact:</td><td><%= text_field_tag :contact %></td></tr>
+      	<tr><td>Title:</td><td><%= text_field_tag :title %></td><td>Authority:</td><td><%= select_tag(:level, options_for_select([['Junior', 1], ['Senior', 2]])) %></td></tr>
+      	<tr><td>Point Of Contact</td><td><%= select_tag(:poc, options_for_select([['No', 1], ['Yes', 2]])) %></td></tr>
+      	<tr><td>User Group:</td></tr>
+      	<tr>
+      		<td><%= select_tag(:group, options_for_select(@groups.collect {|p| [ p.dept.strip(), p.id ] })) %></td>
+      	</tr>
+      </table>
+       
+      <%= submit_tag "CREATE" %>
+    </form>

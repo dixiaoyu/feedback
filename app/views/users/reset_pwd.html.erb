@@ -1,0 +1,40 @@
+   <div id="menu">
+    <ul>
+      <li><%= link_to "HOME", cus_home_path %></li>
+      <li><%= link_to "PROFILE", cus_detail_path(:user_id=>current_user.user_id) %></li>
+      <li><%= link_to "CHANGE PASSWORD", reset_pwd_path, :class=>"menu-active" %></li>
+      <li id="account"><span>WELCOME CUSTOMER!</span><br /><%= link_to "LOG OUT", signout_path %></li>
+    </ul>
+   </div>
+ 
+   <div id="cols">
+    <div id="aside">
+      <ul>
+		<li><%= link_to "Outstanding Case", cus_home_path %></li>
+		<li><%= link_to "Add new feedback", cus_new_case_path%></li>
+	  </ul>
+    </div>
+
+    <div id="content">
+     <h1 id="em">My Password</h1>
+     <%= form_for(:users, :url=>:update_pwd) do |f| %>
+     <table id="password">
+       <tr><td>Current Password</td><td><%= f.password_field :current_pw, :style=>"width:201px;" %></td></tr>
+       <tr><td>New Password</td><td><%= f.password_field :password %>&nbsp;(Minimum of 6 character)</td></tr>
+       <tr><td>Confirm New Password</td><td><%= f.password_field :password_confirmation %><!--<%= session[:password]%>--></td></tr>
+       <tr><td colspan="2" style="font-size: 12px; color: red; text-align: center;">
+  	<% if params[:n]=="0"%>
+  	  Your password confirmation doesn't match.
+  	<% elsif params[:n]=="1" %>
+  	  The current password is incorrect.
+  	<% elsif params[:n]=="2" %>
+  	  The length of password must be more than 6 characters.
+  	<% end %>
+           </td></tr>
+       <tr><td colspan="2" id="move"><%= f.submit "Submit", :style=>"font-size: 18px;" %></td></tr>
+     </table>
+     <% end %>
+
+   </div>   
+   
+   </div><!--end of cols -->

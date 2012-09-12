@@ -1,0 +1,33 @@
+<%= form_for(:processings, :url=>cus_evaluate_service_path) do |f| %>
+<% @responses.each do |response|%>
+  <table>
+  <% if response.response_type == "reply"%>
+    <tr><td><%= response.created_by %>Reply to <%= response.response_to %> on <%= response.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td></tr>
+  <% elsif response.response_type == "forward"%>   
+    <tr><td><%= response.created_by%>Forward to <%= response.response_to %> on <%= response.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td></tr>   
+  <% else %>  
+    <tr><td>Comment from <%= response.created_by%> on <%= response.created_at.strftime("%Y-%m-%d %H:%M:%S")%></td></tr>
+  <% end %>    
+  <tr><td><%=simple_format h response.reply_content %></td></tr>  
+  <% if current_user.user_group=="customer"%>
+    <% if response.service_standard.nil? || response.service_standard==""%>
+    <tr><td><%= radio_button_tag(:standard,"good")%>Good<%= radio_button_tag(:standard,"ok")%>OK<%= radio_button_tag(:standard,"bad")%>Bad</td></tr>
+    <tr><td><%= hidden_field_tag(:processing_id, response.id)%></td></tr>
+    <tr><td><%= hidden_field_tag(:case_id, response.case_id)%></td></tr>
+    <tr><td><%= f.submit "submit"%></td></tr>
+    <% else %>
+    <tr><td>Serveice is <%= response.service_standard%></td></tr>
+    <% end%>
+  <% end %>
+  
+
+  <!--<% if @case.poc == current_user.user_id %>
+    <tr><td><%= link_to "Reply", case_processing_path(:processing=>response.id,:type=>"reply") %>  <%= link_to "Forward", case_processing_path(:processing=>response.id,:type=>"forward") %></td></tr>
+  <% elsif response.response_to == current_user.user_id %>
+    <tr><td><%= link_to "Reply", case_processing_path(:processing=>response.id,:type=>"reply") %>  <%= link_to "Forward", case_processing_path(:processing=>response.id,:type=>"forward") %></td></tr>
+  <% else %>
+    <tr><td><%= link_to "Add commemt", case_processing_path(:processing=>response.id,:type=>"comment") %></td></tr>
+  <% end %>-->
+  </table>
+<% end %>
+<% end %>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% if @title=="signup"%>
+  <title>Sign up</title>
+  <%= stylesheet_link_tag "signin.css"%><!-- SIGNIN STYLE SHEET -->
+  
+  <% elsif @title=="case_processing" %>
+  <%= javascript_include_tag "domtab.js" %>
+  <script type="text/javascript">
+    document.write('<style type="text/css">');    
+    document.write('div.domtab-content {display:none;}<');
+    document.write('/s'+'tyle>');    
+  </script>
+  <%= javascript_include_tag "accordian.pack.js" %> 
+  <%= stylesheet_link_tag "main.css" %><!-- main style sheet -->
+  
+  <% else %>
+  <%= stylesheet_link_tag "main.css" %><!-- main style sheet -->
+  <% end %>
+  
+  <%= javascript_include_tag "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js" %>
+  <%= csrf_meta_tags %>
+</head>
+<body onload="new Accordian('basic-accordian',5,'header_highlight');">
+  <% if @title=="signup"%>
+  
+   <%= yield %>
+  
+  <% else %>
+  <div id="main">
+   <%= image_tag "NATAS.png", :style=>"padding-left:200px; padding-top:5px;" %>
+   
+   <%= yield %>
+  </div>
+  <% end %>
+<%= debug(params) if Rails.env.development? %>
+
+</body>
+</html>
+
+  
+

@@ -1,0 +1,17 @@
+﻿body {background:url("design/Login-BG.png") 190px top no-repeat; color: White; font:16px Verdana;}
+body a {text-decoration:none; color:White;}
+body a:hover {color:#96979F;}
+
+div#signin {background:url("design/Login-FormBG.png") 70px 0 no-repeat; margin:200px 220px; padding-top:10px; padding-left:100px; height:400px; width:800px;}
+div#signin hr {border: 0.01px dashed black;}
+div#signin div.col2 {float:left; width:250px; margin-left:55px;}
+div#signin div.col2 p {color:#A5A6AD; font-size:15px;}
+div#signin div.col1 {float:left; width:410px;}
+div#signin div.col1 table {margin-top:20px; width:410px;}
+div#signin div.col1 table th, form div.col1 table td {padding:15px 10px;}
+div#signin div .small {font-size:14px; color:#96979F;}
+div#signin div #loginbtn {text-align:right; padding-top:17px;}
+div#signin div #signupbtn {background:url("design/Signup-Button.png") 0 0 no-repeat; padding: 8px 40px 20px 30px;}
+div#signin div #signupbtn a {color:#878787;}
+div#signin div #signupbtn a:hover {color:Red;}
+div#signin div #submitbtn {text-align:right; padding-top:15px; font-size:15px;}

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  coy: MyString
+  group_id: MyString
+  group: MyString
+  dept: MyString
+  created_by: MyString
+  updated_by: MyString
+
+two:
+  coy: MyString
+  group_id: MyString
+  group: MyString
+  dept: MyString
+  created_by: MyString
+  updated_by: MyString

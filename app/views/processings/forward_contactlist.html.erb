@@ -1,0 +1,35 @@
+<% if @processing !=nil %>
+  <form name="contact" method="post" action="/case_processing?type=forward&processing=<%= @processing %>" >
+<% else %>
+  <form name="contact" method="post" action="/case_processing?type=forward&case=<%= @case_id %>" >
+<% end %>
+<table>
+<tr><td colspan="6">Interior Contact List</td></tr>
+<tr><th></th><th>User ID</th><th>MR/MS</th><th>First Name</th><th>Last_name</th><th>Direct Phone</th><th>Email</th></tr>
+<% @interior_users.each do |user|%>  
+  <tr><td><%= radio_button_tag(:forward_to, user.user_id) %></td>
+  	  <td><%= user.user_id%></td><td><%= user.gender%></td>
+  	  <td><%= user.first_name%></td><td><%= user.last_name%></td>
+  	  <td><%= user.contact%></td><td><%= user.email%></td></tr>
+<% end %>
+</table><br />
+
+<table>
+<tr><td colspan="6">Agency Contact List</td></tr>
+<tr><th></th><th>User ID</th><th>MR/MS</th><th>First Name</th><th>Last_name</th><th>Direct Phone</th><th>Email</th></tr>
+<% @agency_users.each do |a_user|%>  
+  <tr><td><%= radio_button_tag(:forward_to, a_user.user_id) %></td>
+  	  <td><%= a_user.user_id%></td><td><%= a_user.gender%></td>
+  	  <td><%= a_user.first_name%></td><td><%= a_user.last_name%></td>
+  	  <td><%= a_user.contact%></td><td><%= a_user.email%></td></tr>
+<% end %>
+</table><br />
+<table><tr>
+	<% if @processing !=nil%>
+	  <td><%= link_to "Back", case_processing_path(:processing=>@processing,:type=>"forward")%></td>
+	<% else %>
+	  <td><%= link_to "Back", case_processing_path(:case=>@case_id,:type=>"forward")%></td>
+	<% end %>
+	
+	<td><%= submit_tag "Submit"%></td></tr></table>
+</form>

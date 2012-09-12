@@ -1,0 +1,23 @@
+<!--Start of each accordion item-->
+  <div id="test2-header" class="accordion_headings" >Reply To Customer</div><!--Heading of the accordion ( clicked to show n hide ) -->
+  
+  
+  
+  <div id="test2-content"><!--DIV which show/hide on click of header-->
+  
+  	<!--This DIV is for inline styling like padding...-->
+    <div class="accordion_child">
+      <form name="response" method="post" action="/create_response?type=reply" >
+      <table>
+    	<tr><td><%= current_user.user_id %> reply customer <%= @case.created_by%><br /></td></tr>
+    	<tr><td><%= hidden_field_tag(:case_id, @case_id)%></td></tr>
+	    <tr><td><%= hidden_field_tag(:processing_id, @processing_id)%></td></tr>	
+	    <tr><td><%= text_area_tag "content","",:autofocus => true%></td></tr>
+	    <tr><td><%= submit_tag "Submit"%></td></tr></table>
+      </form>	
+
+    </div>
+    
+  </div>
+<!--End of each accordion item--> 
+

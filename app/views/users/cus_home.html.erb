@@ -1,0 +1,32 @@
+   <div id="menu">
+    <ul>
+      <li><%= link_to "HOME", cus_home_path, :class=>"menu-active" %></li>
+      <li><%= link_to "PROFILE", cus_detail_path(:user_id=>current_user.user_id) %></li>
+      <li><%= link_to "CHANGE PASSWORD", reset_pwd_path %></li>
+      <li id="account"><span>WELCOME <%= @user.user_id %>!</span><br /><%= link_to "LOG OUT", signout_path %></li>
+    </ul>
+   </div>
+ 
+   <div id="cols">
+    <div id="aside">
+      <ul>
+		<li><%= link_to "Outstanding Case", cus_home_path, :class=>"tab-active" %></li>
+		<li><%= link_to "Add new feedback", cus_new_case_path%></li>
+	  </ul>
+    </div>
+    <div id="content">
+      <h1 id="em">Case List</h1>
+      <% if current_user.user_group=="customer"%>
+       <%= render "cases/case_list"%>
+      <% elsif current_user.user_group=="natas"%>
+       There is new response for case
+      <% elsif current_user.user_group=="member"%>
+       There is new response for case
+      <% end %>   
+    </div>   
+   
+   </div><!--end of cols -->
+
+<!--<%= link_to "Outstanding Case", case_show_path %><br />
+<%= link_to "Feedback", cus_new_feedback_path %>-->
+<%= debug current_user %> 

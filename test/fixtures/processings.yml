@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  coy: MyString
+  case_id: MyString
+  reply_content: MyText
+
+two:
+  coy: MyString
+  case_id: MyString
+  reply_content: MyText

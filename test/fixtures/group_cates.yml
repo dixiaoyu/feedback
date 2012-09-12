@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  coy: MyString
+  group_id: MyString
+  category_id: MyString
+  view: MyString
+  process: MyString
+  created_by: MyString
+  updated_by: MyString
+
+two:
+  coy: MyString
+  group_id: MyString
+  category_id: MyString
+  view: MyString
+  process: MyString
+  created_by: MyString
+  updated_by: MyString

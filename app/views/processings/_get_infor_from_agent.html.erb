@@ -1,0 +1,39 @@
+<!--Start of each accordion item-->
+  <div id="test6-header" class="accordion_headings" >Get Information From Interior</div><!--Heading of the accordion ( clicked to show n hide ) -->
+  
+  <!--Prefix of heading (the DIV above this) and content (the DIV below this) to be same... eg. foo-header & foo-content-->
+  
+  <div id="test6-content"><!--DIV which show/hide on click of header-->
+  
+  	<!--This DIV is for inline styling like padding...-->
+    <div class="accordion_child">
+        <form name="response" method="post" action="/create_response?type=forward" >     
+		   <table><th></th><th>Mr/Ms</th><th>First Name</th><th>Last Name</th><th>Title</th><th>User Group</th>
+			<% @get_infos.each_with_index do |staff,index| %>   
+		    <% if index==0
+		      checked = true
+		    else
+		      checked = false
+		    end %>
+		   <tr><td><%= radio_button_tag(:response_to, staff.user_id, checked) %></td>
+		   	   <td><%= staff.gender%></td>
+			   <td><%= staff.first_name%></td>
+			   <td><%= staff.last_name%></td>
+			   <td><%= staff.title%></td>
+			   <td><%= staff.group_id%></td></tr>
+			<% end %> 		  
+		   </table><br />
+		    <table>    	
+		    	<tr><td><%= hidden_field_tag(:case_id, @case_id)%></td></tr>
+			    <tr><td><%= hidden_field_tag(:processing_id, @processing_id)%></td></tr>	
+			    <tr><td><%= text_area_tag "content","",:autofocus => true%></td></tr>
+			    <tr><td><%= submit_tag "Submit"%></td></tr>
+		    </table>
+		</form>	
+    </div>
+    
+  </div>
+<!--End of each accordion item--> 
+
+
+

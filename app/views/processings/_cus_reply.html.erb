@@ -1,0 +1,52 @@
+<!--Start of each accordion item-->
+  <script>
+  	$(document).ready(function(){
+      $("#test-header").click(function(){
+       $("#test-content").slideToggle("fast");
+      });
+    });
+  </script>
+
+  <div id="test-header" class="accordion_headings header_highlight" >Reply the response</div>
+  
+  <div id="test-content">
+    <div class="accordion_child">
+    <% if @staffs.count>0%>	
+        <form name="response" method="post" action="/create_response?type=forward" >
+		   <table>
+		   	<tr><th></th>
+		   		<th>Company Name</th>
+		   		<th>Branch Name</th>
+		   		<th>User_id</th>
+		   		<th>Mr/Ms</th>
+		   		<th>First Name</th>
+		   		<th>Last Name</th>
+		   	</tr>
+			<% @staffs.each_with_index do |poc,index| %> 
+			<% if index==0%>
+			  <% checked=true %>
+			<% else %>
+			  <% checked=false %>
+			<% end %>
+			<tr><td><%= radio_button_tag(:response_to, poc.user_id, checked)%></td>
+				<td><%= poc.company_name%></td>
+				<td><%= poc.branch_name%></td>
+				<td><%= poc.user_id%></td>
+				<td><%= poc.gender%></td>
+				<td><%= poc.first_name%></td>
+				<td><%= poc.last_name%></td></tr>
+			<% end %>	
+  
+		   </table><br />
+		    <table>  
+		        <tr><td><%= hidden_field_tag(:case_id, @case_id)%></td></tr>	  	
+			    <tr><td><%= text_area "content","",:autofocus => true, "cols"=>70%></td></tr>
+			    <tr><td><%= submit_tag "Submit"%></td></tr></table>
+		</form>	
+	<% else %>
+	  No any response till now!	
+	<% end %>		
+    </div>
+    
+  </div>
+<!--End of each accordion item--> 

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  coy: MyString
+  branch_id: MyString
+  branch_name: MyString
+  company_id: MyString
+
+two:
+  coy: MyString
+  branch_id: MyString
+  branch_name: MyString
+  company_id: MyString

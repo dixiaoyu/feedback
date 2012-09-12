@@ -1,0 +1,21 @@
+<!--Start of each accordion item-->
+  <div id="test3-header" class="accordion_headings" >Add Comment</div><!--Heading of the accordion ( clicked to show n hide ) -->
+  
+  
+  
+  <div id="test3-content"><!--DIV which show/hide on click of header-->
+  
+  	<!--This DIV is for inline styling like padding...-->
+    <div class="accordion_child">
+		<form name="response" method="post" action="/create_response?type=comment" >
+		    <table>
+		    	<tr><td>Add Comment</td></tr>    
+		    	<tr><td><%= hidden_field_tag(:case_id, @case_id)%></td></tr>
+			    <tr><td><%= text_area_tag "content"%></td></tr>
+			    <tr><td><%= submit_tag "Submit"%></td></tr></table>
+		</form>
+    </div>
+    
+  </div>
+<!--End of each accordion item--> 
+

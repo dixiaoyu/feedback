@@ -1,0 +1,20 @@
+<%= form_for(:processings, :url=>natas_assign_case_path) do |f| %>
+<table>
+	<tr><th></th><th>User id</th><th>Name</th><th>No. of processing case</th></tr>
+	<% @staffs.each_with_index do |staff,index|%>
+	            <% if index==0
+			      checked = true
+			    else
+			      checked = false
+			    end
+	            %>
+	   <tr>
+	   <td><%= radio_button_tag(:res_staff, staff.user_id, checked) %></td>
+	   <td><%= staff.user_id%></td><td><%= staff.first_name%></td>
+	   <% @num = Case.find(:all, :select => "DISTINCT(case_id)", :conditions => ["poc = ? and status != ?",staff.user_id,"2"])%>	
+	   <td><%= @num.count%></td></tr>    	    		
+    <% end %>	
+    <%= hidden_field_tag(:seleted_items, params[:selected])%> 	
+    <tr><td><%= f.submit "Confirm"%></td></tr>
+</table>
+<% end %>
