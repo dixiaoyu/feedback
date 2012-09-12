@@ -119,46 +119,6 @@ class ProcessingsController < ApplicationController
   end
   
   def forward_contactlist
-    @processing=params[:processing]
-    if params[:processing] !=nil
-      @case_id=Processing.find_by_id(params[:processing]).case_id
-    else
-      @case_id=params[:case]  
-    end
-    @case=Case.find_by_case_id(@case_id)
-    case_cate_id=CaseCategory.find_by_name(@case.category).id
-    @case_company=@case.company_id
-    @case_branch=@case.branch_id
-    #Interior Users
-    groups=Group.where(:group =>current_user.user_group)
-    group_ids=[]
-    groups.each do |group|
-      group_ids << group.group_id 
-    end
-    
-    group_cates=GroupCate.find(:all,:conditions=>["category_id=? and group_id IN (?) ",case_cate_id,group_ids])
-    group_involved_ids=[]
-    group_cates.each do |group_cate|
-      group_involved_ids << group_cate.group_id 
-    end 
-        
-    @interior_users=User.find(:all, :conditions=>["group_id IN (?)",group_involved_ids])
-    
-    #Agency Users  
-    if @case_branch.nil? || @case_branch==""
-      @users=User.find(:all, :conditions=>["company_id =?",@case_company])
-    else
-      @users=User.find(:all, :conditions=>["company_id =? and branch_id = ?",@case_company,@case_branch])    
-    end  
-  
-    user_groups=[]
-    @users.each do |user|
-      user_group_cates=GroupCate.find(:all, :conditions=>["category_id=? and group_id=?",case_cate_id,user.group_id])
-      if user_group_cates !=nil
-        user_groups << user.user_id
-      end
-    end
-    @agency_users=User.find(:all, :conditions=>["user_id IN (?)",user_groups]) 
   end
   
   def cus_evaluate_service
