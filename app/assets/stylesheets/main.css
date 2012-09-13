@@ -59,10 +59,15 @@
 #content #password .btn a:hover {color:Red;}
 
 #content #view_case form {overflow-y:auto;}
+#content #view_case table {text-align:center; width:650px;}
+#content #view_case table th {font-size:16px;}
+#content #view_case table a {color:white; text-decoration:none;}
+#content #view_case table a:hover, #content #view_case table a:visited {color:#B5A5F5;}
 
 #btn {background:url("design/Button-BG.png") 0 0 no-repeat; padding:0px 10px;}
 #btn a {color:black; text-decoration:none; font-size:14px;}
-
+.color {color:#B5A5F5;}
+#number {color:white;} #number a:hover, #number a:visited {color:#B5A5F5;}
 
     .domtab {
     background:#343338;

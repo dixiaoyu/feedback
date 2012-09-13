@@ -21,7 +21,7 @@
       <h1 id="em">Feedback List</h1>
       <% if current_user.poc=="Y"%>
       <% count=Case.find_by_sql("select * from cases where status='0'").count %>
-      There is/are <strong><%= link_to count, staff_view_case_path %></strong> feedback(s)
+      There is/are&nbsp;<span id="number"><%= link_to count, staff_view_case_path %></span>&nbsp;feedback(s)
       <% end %>
     </div>   
    

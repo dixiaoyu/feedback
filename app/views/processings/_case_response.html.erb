@@ -2,9 +2,9 @@
 <% @responses.each do |response|%>
   <table>
   <% if response.response_type == "reply"%>
-    <tr><td><%= response.created_by %>Reply to <%= response.response_to %> on <%= response.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td></tr>
+    <tr><td><%= response.created_by %> Reply to <%= response.response_to %> on <%= response.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td></tr>
   <% elsif response.response_type == "forward"%>   
-    <tr><td><%= response.created_by%>Forward to <%= response.response_to %> on <%= response.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td></tr>   
+    <tr><td><%= response.created_by%> Forward to <%= response.response_to %> on <%= response.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td></tr>   
   <% else %>  
     <tr><td>Comment from <%= response.created_by%> on <%= response.created_at.strftime("%Y-%m-%d %H:%M:%S")%></td></tr>
   <% end %>    
