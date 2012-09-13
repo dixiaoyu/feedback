@@ -123,13 +123,54 @@ class CasesController < ApplicationController
       end   
     elsif current_user.user_group == "natas" && current_user.poc=="N"
       responses=Processing.find(:all,:conditions=>["response_to=?",current_user.user_id]) 
-      @case_ids = []  
-      responses.each do |response|
-        case_id=response.case_id
-        @case_ids << case_id
+      if responses.count>0
+        @case_ids = []  
+        responses.each do |response|
+          case_id=response.case_id
+          @case_ids << case_id
+        end  
+          if params[:type] == "filter"
+            categ_id=params[:nature]
+            if categ_id !=""
+              categ=CaseCategory.find_by_id(categ_id).name        
+              @cases=Case.find(:all, :conditions=>["case_id IN (?) and category=?",@case_ids,categ],:order=>"`created_at` DESC")   
+              @cases_all=Case.find(:all, :conditions=>["case_id NOT IN (?) and category=?",@case_ids,categ],:order=>"`created_at` DESC") 
+            else
+              @cases=Case.find(:all, :conditions=>["case_id IN (?) and category=?",categ],:order=>"`created_at` DESC")   
+              @cases_all=Case.find(:all, :conditions=>["case_id NOT IN (?)",@case_ids],:order=>"`created_at` DESC")         
+            end
+          else
+              @cases=Case.find(:all, :conditions=>["case_id IN (?) and category=?",categ],:order=>"`created_at` DESC")   
+              @cases_all=Case.find(:all, :conditions=>["case_id NOT IN (?)",@case_ids],:order=>"`created_at` DESC")            
+          end    
+      else
+        @cases=nil
+        if current_user.branch_id.nil? || current_user.branch_id==""
+          if params[:type]=="filter"
+            categ_id=params[:nature]
+            if categ_id !=""
+              categ=CaseCategory.find_by_id(categ_id).name            
+              @cases_all=Case.where(:company_id=>current_user.company_id,:category=>categ)
+            else
+              @cases_all=Case.where(:company_id=>current_user.company_id)
+            end 
+         else
+           @cases_all=Case.where(:company_id=>current_user.company_id)
+         end        
+        else
+          if params[:type]=="filter"
+            categ_id=params[:nature]
+            if categ_id !=""
+              categ=CaseCategory.find_by_id(categ_id).name            
+              @cases_all=Case.where(:company_id=>current_user.company_id,:branch_id=>current_user.branch_id,:category=>categ)
+            else
+              @cases_all=Case.where(:company_id=>current_user.company_id,:branch_id=>current_user.branch_id,:category=>categ)
+            end 
+          else
+            @cases_all=Case.where(:company_id=>current_user.company_id,:branch_id=>current_user.branch_id)
+          end                       
+        end  
       end  
-      @cases=Case.find(:all, :conditions=>["case_id IN (?)",@case_ids],:order=>"`created_at` DESC")   
-      @cases_all=Case.find(:all, :conditions=>["case_id NOT IN (?)",@case_ids],:order=>"`created_at` DESC") 
       #@cate_id=GroupCate.find(:all, :conditions=>["`group_id` = ?",current_user.group_id])
       #@cates = []
       #@cate_id.each do |record|

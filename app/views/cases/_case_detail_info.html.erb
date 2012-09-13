@@ -9,6 +9,7 @@ which.style.display="block"
 }
 </script>
 <table cellspacing="10">
+	<tr><td>Case ID:</td><td class="color"><%= @case.case_id%></td></tr>
 	<tr><td>Company Name:</td><td class="color"><%= @case.company_name%></td><td>Branch Name:</td><td class="color"><%= @case.branch_name%></td></tr>
 	<tr><td>Submit Date:</td><td colspan="3" class="color"><%=@case.created_at.strftime("%Y-%m-%d %H:%M:%S")%></td></tr>
 	<tr><td>Title:</td><td class="color"><%= @case.title%></td><td>Nature Of Complaint:</td><td class="color"><%=@case.category%></td></tr>

@@ -19,7 +19,7 @@
       <ul>
 		<% groups=["admin","customer","natas"]%>
         <% if current_user.user_group=="customer"%>
-		<li><%= link_to "Outstanding Case", case_show_path, :class=>"tab-active" %></li>
+		<li><%= link_to "Outstanding Case", case_show_path%></li>
 		<li><%= link_to "Add new feedback", cus_new_case_path %></li>
 		<% elsif current_user.user_group=="natas"%>
 		<% if current_user.poc=="Y"%>

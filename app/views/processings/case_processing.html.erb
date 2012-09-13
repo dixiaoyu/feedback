@@ -6,7 +6,7 @@
       <li><%= link_to "HOME", cus_home_path %></li>
       <li><%= link_to "PROFILE", cus_detail_path(:user_id=>current_user.user_id) %></li>
       <% elsif current_user.user_group=="natas"%>
-      <li><%= link_to "HOME", natas_home_path(:user_id=>current_user.user_id) %></li>
+      <li><%= link_to "HOME", staff_view_case_path(:user_id=>current_user.user_id) %></li>
       <% elsif groups.include?(current_user.user_group)==false %>
       <li><%= link_to "HOME", mbr_home_path(:user_id=>current_user.user_id) %></li>
       <% end %>
