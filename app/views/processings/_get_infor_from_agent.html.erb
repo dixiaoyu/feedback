@@ -26,7 +26,7 @@
 		    <table>    	
 		    	<tr><td><%= hidden_field_tag(:case_id, @case_id)%></td></tr>
 			    <tr><td><%= hidden_field_tag(:processing_id, @processing_id)%></td></tr>	
-			    <tr><td><%= text_area "content","",:autofocus => true, "cols"=>70%></td></tr>
+			    <tr><td><%= text_area_tag "content","",:autofocus => true, :style=>"background:white; width:500px; height:300px;"%></td></tr>
 			    <tr><td><%= submit_tag "Submit"%></td></tr>
 		    </table>
 		</form>	
