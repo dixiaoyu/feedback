@@ -109,12 +109,15 @@ class CasesController < ApplicationController
     elsif current_user.user_group == "natas" && current_user.poc=="Y"
       if params[:type] == "filter"
         categ_id=params[:nature]
-        categ=CaseCategory.find_by_id(categ_id).name
-        @cases=Case.find(:all,
-                  :conditions => ["`category` = ?",categ],
-                  :order => "`created_at` DESC"
-                  )
-    
+        if categ_id !=""
+          categ=CaseCategory.find_by_id(categ_id).name
+          @cases=Case.find(:all,
+                    :conditions => ["`category` = ?",categ],
+                    :order => "`created_at` DESC"
+                    )
+        else
+          @cases=Case.find(:all,:order => "`created_at` DESC")
+        end  
       else
         @cases=Case.find(:all,:order => "`created_at` DESC")
       end   

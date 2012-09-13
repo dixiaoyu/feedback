@@ -3,7 +3,8 @@ class SessionsController < ApplicationController
     if !cookies.signed[:remember_token].nil?
       #redirect_to current_user  
       if current_user.user_group=="natas"
-        redirect_to natas_home_path(:id=>cookies.signed[:remember_token])  
+        #redirect_to natas_home_path(:id=>cookies.signed[:remember_token])
+        redirect_to staff_view_case_path(:id=>cookies.signed[:remember_token])  
       elsif current_user.user_group=="customer"
         redirect_to cus_home_path(:id=>cookies.signed[:remember_token])
       elsif #current_user.user_group=="member"
@@ -29,7 +30,8 @@ class SessionsController < ApplicationController
       if user.user_group=="admin"
         redirect_to user
       elsif user.user_group=="natas"
-        redirect_to natas_home_path(:user_id=>params[:session][:user_id])
+        #redirect_to natas_home_path(:user_id=>params[:session][:user_id])
+        redirect_to staff_view_case_path()
       elsif user.user_group=="customer"    
         redirect_to cus_home_path
       elsif #user.user_group=="member"

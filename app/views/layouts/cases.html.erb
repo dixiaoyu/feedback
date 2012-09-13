@@ -38,9 +38,16 @@ return (true);
 
    <div id="menu">
     <ul>
-      <li><%= link_to "HOME", cus_home_path, :class=>"menu-active" %></li>
-      <li><%= link_to "PROFILE", cus_detail_path(:user_id=>current_user.user_id) %></li>
-      <li><%= link_to "CHANGE PASSWORD", reset_pwd_path %></li>
+      <% groups=["admin","customer","natas"]%>
+      <% if current_user.user_group=="natas"%>
+      <li><%= link_to "HOME", staff_view_case_path(:user_id=>current_user.user_id) %></li>
+      <% elsif current_user.user_group=="customer" %>
+      <li><%= link_to "HOME", cus_home_path(:user_id=>current_user.user_id) %></li>
+      <li><%= link_to "PROFILE", cus_detail_path(:user_id=>current_user.user_id) %></li>      
+      <% elsif groups.include?(current_user.user_group)==false %>
+      <li><%= link_to "HOME", mbr_home_path(:user_id=>current_user.user_id) %></li>
+      <% end %>
+      <li><%= link_to "CHANGE PASSWORD", reset_pwd_path, :class=>"menu-active" %></li>
       <li id="account"><span>WELCOME CUSTOMER!</span><br /><%= link_to "LOG OUT", signout_path %></li>
     </ul>
    </div>

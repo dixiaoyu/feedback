@@ -59,8 +59,8 @@
 #content #password .btn a:hover {color:Red;}
 
 #content #view_case form {overflow-y:auto;}
-#content #view_case table {text-align:center; width:650px;}
-#content #view_case table th {font-size:16px;}
+#content #view_case table {width:650px;}
+#content #view_case table th {font-size:16px; text-align: left;}
 #content #view_case table a {color:red; text-decoration:none;}
 #content #view_case table a:hover, #content #view_case table a:visited {color:#B5A5F5;}
 

@@ -32,10 +32,26 @@ class UsersController < ApplicationController
   end
   
   def cus_home
-    @cases=Case.find(:all,
+    if params[:type] == "filter"
+      categ_id=params[:nature]
+      if categ_id !=""
+      categ=CaseCategory.find_by_id(categ_id).name      
+        @cases=Case.find(:all,
+                :conditions => ["`created_by` = ? and `category` = ?", current_user.user_id, categ],
+                :order => "`created_at` DESC"
+                )
+      else
+        @cases=Case.find(:all,
+               :conditions => ["`created_by` = ?", current_user.user_id],
+               :order => "`created_at` DESC"
+               )          
+      end            
+    else
+      @cases=Case.find(:all,
            :conditions => ["`created_by` = ?", current_user.user_id],
            :order => "`created_at` DESC"
            ) 
+    end 
     @user=User.find_by_user_id(current_user.user_id) 
   end
   

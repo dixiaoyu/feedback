@@ -8,12 +8,12 @@ else
 which.style.display="block"
 }
 </script>-->
-<%= form_for(:cases, :url=>case_show_path(:type=>"filter")) do |f| %>
+<%= form_for(:cases, :url=>cus_home_path(:type=>"filter")) do |f| %>
   <% if params[:type]=="filter"%>
     <%key=params[:nature]%>
-    Category: <%= select_tag(:nature, options_for_select(CaseCategory.all.collect {|p| [ p.name.strip(), p.id ] },key)) %> 
+    Category: <%= select_tag(:nature, options_for_select(CaseCategory.all.collect {|p| [ p.name.strip(), p.id ] },key),:include_blank => true) %> 
   <% else%>
-    Category: <%= select_tag(:nature, options_for_select(CaseCategory.all.collect {|p| [ p.name.strip(), p.id ] })) %>
+    Category: <%= select_tag(:nature, options_for_select(CaseCategory.all.collect {|p| [ p.name.strip(), p.id ] }), :include_blank => true) %>
   <% end %>  
     <%= f.submit "Filter" %>
 <% end %><br /><br /><br />

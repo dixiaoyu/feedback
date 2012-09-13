@@ -20,7 +20,7 @@
       <ul>
       	<% groups=["admin","customer","natas"]%>
         <% if current_user.user_group=="customer"%>
-		<li><%= link_to "Outstanding Case", case_show_path, :class=>"tab-active" %></li>
+		<li><%= link_to "Outstanding Case", cus_home_path, :class=>"tab-active" %></li>
 		<li><%= link_to "Add new feedback", cus_new_case_path %></li>
 		<% elsif current_user.user_group=="natas"%>
 		  <li><%= link_to " Feedback List", staff_view_case_path, :style=>"padding-left:50px; padding-right:60px;" %></li>
@@ -92,24 +92,26 @@
      <% groups=["admin","customer","natas"]%>
      <% if current_user.user_group=="customer"%>
      <%= render "processings/cus_reply"%>
-
+     <!--<%= link_to "Back", cus_home_path %>-->
      <% elsif current_user.user_group=="natas"%>	
       <%= render "processings/get_agent_reply"%>
       <%= render "processings/get_infor_from_natas"%>
 	  <%= render "processings/reply_to_customer"%>
 	  <%= render "processings/add_comment"%>
+	  <!--<%= link_to "Back", staff_view_case_path %>-->
      <% elsif groups.include?(current_user.user_group)==false %>
       <%= render "processings/reply_to_natas"%>
       <%= render "processings/get_infor_from_agent"%>
 	  <%= render "processings/reply_to_customer"%>
 	  <%= render "processings/add_comment"%>
+	  <!--<%= link_to "Back", staff_view_case_path %>-->
      <% end %>
 
     </div><!--End of accordion parent-->
     
    </div><!-- end of content -->
   </div><!-- end of cols -->
-   
+  
 	</body>
 </html>
 
