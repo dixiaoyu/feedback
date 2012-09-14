@@ -15,27 +15,26 @@
     
     <div id="content">
     	<div id="view_case">
+         <div id="view_case_form">
   <%= form_for(:cases, :url=>staff_view_case_path(:type=>"filter")) do |f| %>
   <% if params[:type]=="filter"%>
     <%key=params[:nature]%>
-    <h3>Category: <%= select_tag(:nature, options_for_select(CaseCategory.all.collect {|p| [ p.name.strip(), p.id ] },key),:include_blank => true) %>
+    <div>Category: <%= select_tag(:nature, options_for_select(CaseCategory.all.collect {|p| [ p.name.strip(), p.id ] },key),:include_blank => true) %>
   <% else%>
-    <h3>Category: <%= select_tag(:nature, options_for_select(CaseCategory.all.collect {|p| [ p.name.strip(), p.id ] }),:include_blank => true) %>
+    <div>Category: <%= select_tag(:nature, options_for_select(CaseCategory.all.collect {|p| [ p.name.strip(), p.id ] }),:include_blank => true) %>
   <% end %>  
-    <%= f.submit "Filter" %>&nbsp;&nbsp;&nbsp;&nbsp;
+    <%= f.submit "Filter" %></div>
+<% end %>
 
-<form name="search" method="post" action="/case_processing?type=search" >
+<form name="search" method="post" action="/case_processing?type=search" id="search" >
 	<%= text_field_tag "case_id"%>
 	<%= submit_tag "search"%>
-</form>
 <% if params[:search]=="none"%>
-NO Record
+<span style="font-size:14px; color: red; font-weight: normal;">NO Record</span>
 <% end %>
+</form>&nbsp;
 
-</h3>
-<% end %>
-
-
+</div>
 
 <% if current_user.user_group=="natas"%>
   <% if current_user.poc=="Y"%>

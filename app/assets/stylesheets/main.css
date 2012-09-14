@@ -63,6 +63,9 @@
 #content #view_case table th {font-size:16px; text-align: left;}
 #content #view_case table a {color:red; text-decoration:none;}
 #content #view_case table a:hover, #content #view_case table a:visited {color:#B5A5F5;}
+#content #view_case_form {margin:20px 10px; width:650px; font-size:16px; font-weight:bold;}
+#content #view_case_form div {float:left;}
+#content #view_case_form form#search {float:right; padding-right:20px;}
 
 #btn {background:url("design/Button-BG.png") 0 0 no-repeat; padding:0px 10px;}
 #btn a {color:black; text-decoration:none; font-size:14px;}
