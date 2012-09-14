@@ -100,7 +100,7 @@ class UsersController < ApplicationController
             redirect_to cus_detail_path(:user_id=>current_user.user_id)
           elsif  current_user.user_group=="natas" 
             redirect_to natas_home_path(:user_id=>current_user.user_id)
-          elsif  current_user.user_group=="member" 
+          elsif  current_user.user_group!="admin"&&current_user.user_group!="natas"&&current_user.user_group!="customer" 
             redirect_to mbr_home_path(:user_id=>current_user.user_id) 
           end  
         end  

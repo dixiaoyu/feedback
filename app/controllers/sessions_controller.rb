@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       elsif current_user.user_group=="customer"
         redirect_to cus_home_path(:id=>cookies.signed[:remember_token])
       elsif #current_user.user_group=="member"
-        redirect_to mbr_home_path(:id=>cookies.signed[:remember_token])        
+        redirect_to staff_view_case_path(:id=>cookies.signed[:remember_token])        
       end    
     end    
   end
@@ -35,7 +35,7 @@ class SessionsController < ApplicationController
       elsif user.user_group=="customer"    
         redirect_to cus_home_path
       elsif #user.user_group=="member"
-        redirect_to mbr_home_path(:user_id=>params[:session][:user_id])
+        redirect_to staff_view_case_path(:user_id=>params[:session][:user_id])
       end         
       #redirect_to home_path(:id=>user.user_id.strip())  
     end       

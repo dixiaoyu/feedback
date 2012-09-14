@@ -90,7 +90,30 @@ class CasesController < ApplicationController
   end
   
   def staff_view_case
-    if current_user.user_group != "natas" && current_user.user_group != "customer" && current_user.user_group != "admin"
+    if current_user.user_group != "natas" && current_user.user_group != "customer" && current_user.user_group != "admin" && current_user.poc=="Y"
+      @processings=Processing.find(:all,:conditions=>["response_to=?",current_user.user_id])
+      @case_ids=[]
+      @processings.each do |processing|
+        if !@case_ids.include?processing.case_id
+          @case_ids << processing.case_id
+        end
+      end  
+      @cases=Case.find(:all,:conditions=>["case_id IN (?)",@case_ids])    
+      if params[:type]=="filter"
+        categ_id=params[:nature]
+        if categ_id !=""          
+          categ=CaseCategory.find_by_id(categ_id).name
+          @case_ids=[]
+          @cases.each do |one|
+            if one.category==categ
+              @case_ids << one.case_id
+            end            
+          end  
+          @cases=Case.find(:all,:conditions=>["case_id IN (?)",@case_ids])
+        end
+      end          
+
+=begin     
       if current_user.branch_id.nil? || current_user.branch_id==""
         @related_case=Case.where(:company_id=>current_user.company_id)
       else
@@ -106,6 +129,7 @@ class CasesController < ApplicationController
         @response_cases << processing.case_id  
       end
       @cases=Case.find(:all,:conditions=>["case_id IN (?)",@response_cases],:order => "`created_at` DESC") 
+=end 
     elsif current_user.user_group == "natas" && current_user.poc=="Y"
       if params[:type] == "filter"
         categ_id=params[:nature]
@@ -140,7 +164,7 @@ class CasesController < ApplicationController
               @cases_all=Case.find(:all, :conditions=>["case_id NOT IN (?)",@case_ids],:order=>"`created_at` DESC")         
             end
           else
-              @cases=Case.find(:all, :conditions=>["case_id IN (?) and category=?",categ],:order=>"`created_at` DESC")   
+              @cases=Case.find(:all, :conditions=>["case_id IN (?)",@case_ids],:order=>"`created_at` DESC")   
               @cases_all=Case.find(:all, :conditions=>["case_id NOT IN (?)",@case_ids],:order=>"`created_at` DESC")            
           end    
       else

@@ -54,42 +54,41 @@ class ProcessingsController < ApplicationController
   def case_processing
     @title="case_processing"
     groups=["admin","natas","customer"]
-    if params[:type]=="search"
-      @case_id=params[:cases][:case_id]
-    else  
-      @case_id=params[:case_id]
-    end
-    #@case_id=params[:case_id]
+    @case_id=params[:case_id]
     @case=Case.find_by_case_id(@case_id)
-    if current_user.user_group=="customer"
-      @responses=Processing.find(:all, :conditions=> ["case_id = ? and response_to=?",@case_id,current_user.user_id])
-      staff_ids=[]
-      @responses.each do |response|
-        if staff_ids.include?(response.created_by)==false
-          staff_ids << response.created_by
+    if @case !=nil   
+      if current_user.user_group=="customer"
+        @responses=Processing.find(:all, :conditions=> ["case_id = ? and response_to=?",@case_id,current_user.user_id])
+        staff_ids=[]
+        @responses.each do |response|
+          if staff_ids.include?(response.created_by)==false
+            staff_ids << response.created_by
+          end 
+        end
+        @staffs=User.find(:all,:conditions=>["user_id IN (?)",staff_ids])      
+      #elsif groups.include?(current_user.user_group)  
+      elsif current_user.user_group=="natas"
+        if @case.branch_id=="" || @case.branch_id.nil?
+          @agent_pocs=User.find(:all,:conditions=>["company_id =? and poc=?",@case.company_id,"Y"])
+        else
+          @agent_pocs=User.find(:all,:conditions=>["company_id =? and branch_id =? and poc=?",@case.company_id,@case.branch_id,"Y"])
         end 
+      @agent_others=User.find(:all, :conditions=>["poc=? and user_group NOT IN (?)","Y",groups])  
+      #@natas_staffs=User.find(:all,:conditions=>["user_group=? and level=?","natas","Junior"])
+      @get_infos=User.find(:all,:conditions=>["user_group=?","natas"])
+      @responses=Processing.find(:all, :conditions=> ["case_id = ?",@case_id]) 
+      elsif groups.include?(current_user.user_group)==false
+        @responses=Processing.find(:all, :conditions=> ["case_id = ?",@case_id])   
+        if current_user.branch_id=="" || current_user.branch_id.nil?
+          @get_infos=User.find(:all,:conditions=>["company_id =?",current_user.company_id])
+        else
+          @get_infos=User.find(:all,:conditions=>["company_id =? and branch_id =? and poc=?",current_user.company_id,current_user.branch_id,"Y"])
+        end 
+        @natas_staffs=User.find(:all,:conditions=>["user_group=? and level=?","natas","Junior"]) 
       end
-      @staffs=User.find(:all,:conditions=>["user_id IN (?)",staff_ids])      
-    #elsif groups.include?(current_user.user_group)  
-    elsif current_user.user_group=="natas"
-      if @case.branch_id=="" || @case.branch_id.nil?
-        @agent_pocs=User.find(:all,:conditions=>["company_id =? and poc=?",@case.company_id,"Y"])
-      else
-        @agent_pocs=User.find(:all,:conditions=>["company_id =? and branch_id =? and poc=?",@case.company_id,@case.branch_id,"Y"])
-      end 
-    @agent_others=User.find(:all, :conditions=>["poc=? and user_group NOT IN (?)","Y",groups])  
-    #@natas_staffs=User.find(:all,:conditions=>["user_group=? and level=?","natas","Junior"])
-    @get_infos=User.find(:all,:conditions=>["user_group=?","natas"])
-    @responses=Processing.find(:all, :conditions=> ["case_id = ?",@case_id]) 
-    elsif groups.include?(current_user.user_group)==false
-      @responses=Processing.find(:all, :conditions=> ["case_id = ?",@case_id])   
-      if current_user.branch_id=="" || current_user.branch_id.nil?
-        @get_infos=User.find(:all,:conditions=>["company_id =?",current_user.company_id])
-      else
-        @get_infos=User.find(:all,:conditions=>["company_id =? and branch_id =? and poc=?",current_user.company_id,current_user.branch_id,"Y"])
-      end 
-      @natas_staffs=User.find(:all,:conditions=>["user_group=? and level=?","natas","Junior"]) 
-    end    
+    else 
+      redirect_to staff_view_case_path(:search=>"none")   
+    end     
   end
   
   def create_response
