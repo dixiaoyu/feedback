@@ -22,13 +22,13 @@
   <% else%>
     <h3>Category: <%= select_tag(:nature, options_for_select(CaseCategory.all.collect {|p| [ p.name.strip(), p.id ] }),:include_blank => true) %>
   <% end %>  
-    <%= f.submit "Filter" %></h3>
-<% end %>
+    <%= f.submit "Filter" %>&nbsp;&nbsp;&nbsp;&nbsp;
 
 <form name="search" method="post" action="/case_processing?type=search" >
 	<%= text_field_tag "case_id"%>
 	<%= submit_tag "search"%>
-</form>
+</form></h3>
+<% end %>
 
 <% if current_user.user_group=="natas"%>
   <% if current_user.poc=="Y"%>
