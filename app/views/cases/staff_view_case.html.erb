@@ -24,12 +24,11 @@
   <% end %>  
     <%= f.submit "Filter" %></h3>
 <% end %>
-  <%= form_for(:cases, :url=>case_processing_path(:type=>"search")) do |f| %>
 
-    <h3><%=f.text_field :case_id%>
- 
-    <%= f.submit "Search" %></h3>
-<% end %>
+<form name="search" method="post" action="/case_processing?type=search" >
+	<%= text_field_tag "case_id"%>
+	<%= submit_tag "search"%>
+</form>
 
 <% if current_user.user_group=="natas"%>
   <% if current_user.poc=="Y"%>
