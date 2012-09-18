@@ -10,12 +10,14 @@ which.style.display="block"
 </script>
 <table cellspacing="10">
 	<tr><td>Case ID:</td><td class="color"><%= @case.case_id%></td></tr>
-	<tr><td>Company Name:</td><td class="color"><%= @case.company_name%></td><td>Branch Name:</td><td class="color"><%= @case.branch_name%></td></tr>
-	<tr><td>Submit Date:</td><td colspan="3" class="color"><%=@case.created_at.strftime("%Y-%m-%d %H:%M:%S")%></td></tr>
-	<tr><td>Title:</td><td class="color"><%= @case.title%></td><td>Nature Of Complaint:</td><td class="color"><%=@case.category%></td></tr>
-	<tr><td>Date Of Incident:</td><td colspan="3" class="color"><%= @case.incident_date.to_date%></td></tr>
+	<tr><td>Company Name:</td><td class="color"><%= @case.company_name%></td></tr>
+	<tr><td>Branch Name:</td><td class="color"><%= @case.branch_name%></td></tr>
+	<tr><td>Submit Date:</td><td class="color"><%=@case.created_at.strftime("%Y-%m-%d %H:%M:%S")%></td></tr>
+	<tr><td>Title:</td><td class="color"><%= @case.title%></td></tr>
+	<tr><td>Nature Of Complaint:</td><td class="color"><%=@case.category%></td></tr>
+	<tr><td>Date Of Incident:</td><td class="color"><%= @case.incident_date.to_date%></td></tr>
 	<tr><td>Complaint:</td></tr>
-	<tr><td colspan="4"><%= @case.content %></td></tr>		
+	<tr><td colspan="2" class="color"><%= @case.content %></td></tr>		
 
 <!--<% if @case.status=0 && current_user.user_group=="customer"%>
   <%= link_to "Edit", case_edit_path(:case_id=>@case.case_id)%> ||

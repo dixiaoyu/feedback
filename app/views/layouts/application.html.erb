@@ -28,15 +28,18 @@
    <%= yield %>
   
   <% else %>
-  <div id="main">
-   <%= image_tag "NATAS.png", :style=>"padding-left:200px; padding-top:5px;" %>
+  <%= image_tag "NATAS.png", :style=>"padding-left:177px;" %>
    
    <%= yield %>
-  </div>
+   
+  <%= image_tag "footer.png", :style=>"padding-left:177px;" %>
+  
+  
   <% end %>
-<%= debug(params) if Rails.env.development? %>
+
 
 </body>
+<!--<%= debug(params) if Rails.env.development? %>-->  
 </html>
 
   

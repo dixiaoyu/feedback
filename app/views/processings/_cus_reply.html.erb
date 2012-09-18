@@ -9,8 +9,8 @@
 
   <div id="test-header" class="accordion_headings header_highlight" >Reply the response</div>
   
-  <div id="test-content">
-    <div class="accordion_child" style="height: 180px;">
+  <div id="test-content" style="display: none;">
+    <div class="accordion_child">
     <% if @staffs.count>0%>	
         <form name="response" method="post" action="/create_response?type=forward" >
 		   <table>
@@ -28,7 +28,7 @@
 			<% else %>
 			  <% checked=false %>
 			<% end %>
-			<tr><td><%= radio_button_tag(:response_to, poc.user_id, checked)%></td>
+			<tr class="color"><td><%= radio_button_tag(:response_to, poc.user_id, checked)%></td>
 				<td><%= poc.company_name%></td>
 				<td><%= poc.branch_name%></td>
 				<td><%= poc.user_id%></td>
@@ -40,7 +40,7 @@
 		   </table><br />
 		    <table>  
 		        <tr><td><%= hidden_field_tag(:case_id, @case_id)%></td></tr>	  	
-			    <tr><td><%= text_area_tag "content","",:autofocus => true, :style=>"background:white; width:500px; height:300px;"%></td></tr>
+			    <tr><td><%= text_area_tag "content","",:autofocus => true, :style=>"background:white; width:360px; height:150px; "%></td></tr>
 			    <tr><td><%= submit_tag "Submit"%></td></tr></table>
 		</form>	
 	<% else %>

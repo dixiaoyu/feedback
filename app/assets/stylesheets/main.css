@@ -1,25 +1,24 @@
-﻿body {background:url("design/Home-BG.png") 185px top no-repeat; color: White; font:16px Verdana; height:880px;}
+﻿body {color: White; font:16px Verdana; height:880px;}
 
 #main {}
-#menu {padding:15px 15px 13px 15px; background:url("design/MenuBar.png") 177px 10px no-repeat; width:1130px;}
+#menu {padding:5px 15px 23px 15px; background:url("Design/MenuBar.png") 177px 0px no-repeat; margin-top:-5px; width:1130px;}
 #menu ul {margin:6px 10px 6px 300px; padding-bottom:30px;}
 #menu li {float:left; list-style-type:none; padding-left: 40px;}
 #menu li a {color:#B5B5B5; text-decoration:none;}
 #menu li a:hover {color:White;}
-#menu li#account {margin-left:595px; margin-top:-25px; text-align:right; font-size:12px;}
+#menu li#account {margin-right:5px; text-align:right; font-size:12px; width:325px;}
 #menu li span {color:#D1722B;}
 #menu li a.menu-active {color:White;}
 
-#cols {position:relative; margin:0 195px; padding:16px 10px; background:url("design/Content-BG.png") center top no-repeat; width:940px; height:610px;}
+#cols {margin-left:177px; height:100%; padding:10px 20px; background-image:url("Design/Content-BG.png"); background-repeat: repeat-y; width:940px;}
 #aside { margin-left:-35px; float:left; font-size:18px;}
 #aside li { list-style-type:none; margin:0 0 10px 0; padding:5px;}
-#aside a {color:#93858A; width:280px; padding:8px 40px 8px 20px; background:url("design/Tab-BG.png") 0 0 no-repeat; text-decoration:none;}
+#aside a {color:#93858A; width:280px; padding:8px 40px 8px 20px; background:url("Design/Tab-BG.png") 0 0 no-repeat; text-decoration:none;}
 #aside a:hover {background-position:0 -37.5px; color:White;}
 #aside a:active {background-position:0 -37.5px; color:White;}
 #aside a.tab-active {background-position:0 -37.5px; color:White;}
 
-#content {background:url("design/ContentTab.png") 0px 0px no-repeat; overflow:hidden; height:520px;
-          padding-left: 10px; font-size:14px; width: 670px;}
+#content {background-color:#23252E; float:left; padding-left: 12px; padding-bottom:10px; font-size:14px; width: 670px;}
 #content h1 {font-size:150%;}
 #content h4 {font-size:100%;}
 #content h4 span {font-weight:normal; color:#93858A;}
@@ -30,7 +29,7 @@
 
 #content h1#em {background-color:black; padding:10px 0 10px 10px; margin:10px 15px 10px 0;}
 #content form#caselist hr {border:1px dashed white;}
-#content form#caselist {background-color:#343338; width:635px; height:400px; overflow:auto; margin-top:-40px; padding:10px;}
+#content form#caselist {background-color:#343338; width:635px; margin-top:-40px; padding:10px; height:760px; overflow-y: auto;}
 #content form#caselist table {padding-bottom:40px; margin-left:10px; margin-top:10px; width:590px; border-bottom:dashed 1px white;}
 #content form#caselist table a {color:#AA252B;}
 #content form#caselist table a:hover {color:Black;}
@@ -62,64 +61,67 @@
 #content #view_case table {width:650px;}
 #content #view_case table th {font-size:16px; text-align: left;}
 #content #view_case table a {color:red; text-decoration:none;}
-#content #view_case table a:hover, #content #view_case table a:visited {color:#B5A5F5;}
+#content #view_case table a:hover, #content #view_case table a:visited {color:#83857C;}
 #content #view_case_form {margin:20px 10px; width:650px; font-size:16px; font-weight:bold;}
 #content #view_case_form div {float:left;}
 #content #view_case_form form#search {float:right; padding-right:20px;}
 
 #btn {background:url("design/Button-BG.png") 0 0 no-repeat; padding:0px 10px;}
 #btn a {color:black; text-decoration:none; font-size:14px;}
-.color {color:#B5A5F5;}
-#number {color:red;} #number a:hover, #number a:visited {color:#B5A5F5;}
+.color {color:#83857C;}
+#number {color:red;} #number a:hover, #number a:visited {color:#83857C;}
 
     .domtab {
-    background:#343338;
-    width:650px;
-    margin-top: -10px;
+    width:655px;
+    margin-top: 0px;
+    margin-left:-20px;
     }
     ul.domtabs {
     margin-left:-35px;
+    float: left;
     }
     ul.domtabs li{
-    float:left;
-    background:#343338;
     color:white;
+    padding-bottom:5px;
     list-style-type: none;
     font-size:16px;
+    }
+    ul.domtabs li.reply {
+    height: 100px;
+    background-color: #343338;
+    margin-left:5px;
     }
     ul.domtabs a:link {
     background:#211F20;
     color:white;
-    width:210px;
-    padding-top:10px; padding-bottom:10px;
+    width:280px;
+    padding-top:8px; padding-bottom:8px;
     display:block; 
     text-align:center;
-    height:1.5em;
+    height:1.2em;
     text-decoration:none;   	
     }
     ul.domtabs a:visited,
     ul.domtabs a:active,
     ul.domtabs a:hover{
-      width:210px;
-      padding-top:10px; padding-bottom:10px;
+      width:280px;
+      padding-top:8px; padding-bottom:8px;
       display:block;
       color:red;
       text-align:center;
-      height:1.5em;
+      height:1.2em;
       text-decoration:none;
     }
       div.domtab-content {
+      float: right;
       clear:both;
-      width:565px;
-      height:200px;
-      overflow-y:auto;
-      padding:1em 3em;
+      width:355px;
+      padding:5px; margin-top:-265px;
     }
       
 #basic-accordian{
   padding-top:5px;
-  width:650px;
-  height:200px;
+  width:390px;
   z-index:2;
 }
 
@@ -136,16 +138,16 @@
 }
 
 .accordion_child{
-  padding:15px;
+  padding:5px;
   background:#211F20;
-  width:620px;
-  overflow-y: auto;
+  width:380px;
 }
 .accordion_child table {
-  width:610px;
-  font-size:13px;
+  width:380px;
+  font-size:12px;
   text-align:center;
 }
+.accordion_child table th {font-weight:normal;}
 .header_highlight{
   background:#343338;
 }

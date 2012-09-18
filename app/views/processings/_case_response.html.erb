@@ -1,6 +1,7 @@
 <%= form_for(:processings, :url=>cus_evaluate_service_path) do |f| %>
 <% @responses.each do |response|%>
-  <table>
+
+  <table cellspacing="10">
   <% if response.response_type == "reply"%>
     <tr><td><%= response.created_by %> Reply to <%= response.response_to %> on <%= response.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td></tr>
   <% elsif response.response_type == "forward"%>   
@@ -11,7 +12,7 @@
   <tr><td><%=simple_format h response.reply_content %></td></tr>  
   <% if current_user.user_group=="customer"%>
     <% if response.service_standard.nil? || response.service_standard==""%>
-    <tr><td><%= radio_button_tag(:standard,"good")%>Good<%= radio_button_tag(:standard,"ok")%>OK<%= radio_button_tag(:standard,"bad")%>Bad</td></tr>
+    <tr><td><%= radio_button_tag(:standard,"good")%>Good&nbsp;&nbsp;<%= radio_button_tag(:standard,"ok")%>OK&nbsp;&nbsp;<%= radio_button_tag(:standard,"bad")%>Bad&nbsp;</td></tr>
     <tr><td><%= hidden_field_tag(:processing_id, response.id)%></td></tr>
     <tr><td><%= hidden_field_tag(:case_id, response.case_id)%></td></tr>
     <tr><td><%= f.submit "submit"%></td></tr>
@@ -31,3 +32,53 @@
   </table>
 <% end %>
 <% end %>
+
+<div id="basic-accordian" ><!--Parent of the Accordion-->
+    	<script>
+  	$(document).ready(function(){
+      $("#test-header4").click(function(){
+       $("#test-content4").slideToggle("fast");
+       $("#test-content1").css("display","none");
+       $("#test-content2").css("display","none");
+       $("#test-content3").css("display","none");
+      });
+      $("#test-header3").click(function(){
+       $("#test-content3").slideToggle("fast");
+       $("#test-content1").css("display","none");
+       $("#test-content2").css("display","none");
+       $("#test-content4").css("display","none");
+      });
+      $("#test-header2").click(function(){
+       $("#test-content2").slideToggle("fast");
+       $("#test-content1").css("display","none");
+       $("#test-content4").css("display","none");
+       $("#test-content3").css("display","none");
+      });
+      $("#test-header1").click(function(){
+       $("#test-content1").slideToggle("fast");
+       $("#test-content4").css("display","none");
+       $("#test-content2").css("display","none");
+       $("#test-content3").css("display","none");
+      });
+    });
+     </script>
+    	
+     <% groups=["admin","customer","natas"]%>
+     <% if current_user.user_group=="customer"%>
+     <%= render "processings/cus_reply"%>
+     <!--<%= link_to "Back", cus_home_path %>-->
+     <% elsif current_user.user_group=="natas"%>	
+      <%= render "processings/get_agent_reply"%>
+      <%= render "processings/get_infor_from_natas"%>
+	  <%= render "processings/reply_to_customer"%>
+	  <%= render "processings/add_comment"%>
+	  <!--<%= link_to "Back", staff_view_case_path %>-->
+     <% elsif groups.include?(current_user.user_group)==false %>
+      <%= render "processings/reply_to_natas"%>
+      <%= render "processings/get_infor_from_agent"%>
+	  <%= render "processings/reply_to_customer"%>
+	  <%= render "processings/add_comment"%>
+	  <!--<%= link_to "Back", staff_view_case_path %>-->
+     <% end %>
+
+    </div><!--End of accordion parent-->

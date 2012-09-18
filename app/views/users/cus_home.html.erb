@@ -1,3 +1,4 @@
+     
    <div id="menu">
     <ul>
       <li><%= link_to "HOME", cus_home_path, :class=>"menu-active" %></li>
@@ -6,6 +7,7 @@
       <li id="account"><span>WELCOME <%= @user.user_id %>!</span><br /><%= link_to "LOG OUT", signout_path %></li>
     </ul>
    </div>
+   
  
    <div id="cols">
     <div id="aside">
@@ -25,4 +27,4 @@
 
 <!--<%= link_to "Outstanding Case", case_show_path %><br />
 <%= link_to "Feedback", cus_new_feedback_path %>-->
-<%= debug current_user %> 
+<!--<%= debug current_user %>--> 

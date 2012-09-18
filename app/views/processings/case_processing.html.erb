@@ -40,9 +40,12 @@
 
     <div class="domtab">
 	 <ul class="domtabs">
-		<li><a href="#what">Detail</a></li>
+		<li><a href="#what" style="margin-left: 3px;">Detail</a></li>
 		<li style="margin-left: 5px;"><a href="#how">Attach</a></li>
-		<li style="margin-left: 5px;"><a href="#fl">Follow Up</a></li>
+		<li style="margin-left: 5px;"><a href="#fl">Reply</a></li>
+		<li class="reply">
+         
+        </li>
 	 </ul>
 	<div class="domtab-content">
 		<a href="what" id="what"></a>
@@ -57,57 +60,9 @@
 		<p><%= render "processings/case_response"%></p>
 	</div>
    </div><!-- end of domtab -->
-
+    
  
-    <div id="basic-accordian" ><!--Parent of the Accordion-->
-    	<script>
-  	$(document).ready(function(){
-      $("#test-header4").click(function(){
-       $("#test-content4").slideToggle("fast");
-       $("#test-content1").css("display","none");
-       $("#test-content2").css("display","none");
-       $("#test-content3").css("display","none");
-      });
-      $("#test-header3").click(function(){
-       $("#test-content3").slideToggle("fast");
-       $("#test-content1").css("display","none");
-       $("#test-content2").css("display","none");
-       $("#test-content4").css("display","none");
-      });
-      $("#test-header2").click(function(){
-       $("#test-content2").slideToggle("fast");
-       $("#test-content1").css("display","none");
-       $("#test-content4").css("display","none");
-       $("#test-content3").css("display","none");
-      });
-      $("#test-header1").click(function(){
-       $("#test-content1").slideToggle("fast");
-       $("#test-content4").css("display","none");
-       $("#test-content2").css("display","none");
-       $("#test-content3").css("display","none");
-      });
-    });
-     </script>
-    	
-     <% groups=["admin","customer","natas"]%>
-     <% if current_user.user_group=="customer"%>
-     <%= render "processings/cus_reply"%>
-     <!--<%= link_to "Back", cus_home_path %>-->
-     <% elsif current_user.user_group=="natas"%>	
-      <%= render "processings/get_agent_reply"%>
-      <%= render "processings/get_infor_from_natas"%>
-	  <%= render "processings/reply_to_customer"%>
-	  <%= render "processings/add_comment"%>
-	  <!--<%= link_to "Back", staff_view_case_path %>-->
-     <% elsif groups.include?(current_user.user_group)==false %>
-      <%= render "processings/reply_to_natas"%>
-      <%= render "processings/get_infor_from_agent"%>
-	  <%= render "processings/reply_to_customer"%>
-	  <%= render "processings/add_comment"%>
-	  <!--<%= link_to "Back", staff_view_case_path %>-->
-     <% end %>
-
-    </div><!--End of accordion parent-->
+    
     
    </div><!-- end of content -->
   </div><!-- end of cols -->
