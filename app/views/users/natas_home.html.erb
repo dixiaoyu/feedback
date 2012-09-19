@@ -4,7 +4,7 @@
     <ul>
       <li><%= link_to "HOME", staff_view_case_path(:user_id=>current_user.user_id), :class=>"menu-active" %></li>
       <li><%= link_to "CHANGE PASSWORD", reset_pwd_path %></li>
-      <li id="account"><span>WELCOME NATAS!</span><br /><%= link_to "LOG OUT", signout_path %></li>
+      <li id="account"><span>WELCOME <%= @user.user_id %>!</span><br /><%= link_to "LOG OUT", signout_path %></li>
     </ul>
    </div>
  

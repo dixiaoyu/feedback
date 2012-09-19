@@ -10,15 +10,15 @@
 #menu li span {color:#D1722B;}
 #menu li a.menu-active {color:White;}
 
-#cols {margin-left:177px; height:100%; padding:10px 20px; background-image:url("Design/Content-BG.png"); background-repeat: repeat-y; width:940px;}
+#cols {margin-left:177px; height:82%; padding:10px 20px; background-image:url("Design/Content-BG.png"); background-repeat: repeat-y; width:940px;}
 #aside { margin-left:-35px; float:left; font-size:18px;}
 #aside li { list-style-type:none; margin:0 0 10px 0; padding:5px;}
-#aside a {color:#93858A; width:280px; padding:8px 40px 8px 20px; background:url("Design/Tab-BG.png") 0 0 no-repeat; text-decoration:none;}
+#aside a {color:#93858A; width:260px; padding:8px 30px 8px 30px; background:url("Design/Tab-BG.png") 0 0 no-repeat; text-decoration:none;}
 #aside a:hover {background-position:0 -37.5px; color:White;}
 #aside a:active {background-position:0 -37.5px; color:White;}
 #aside a.tab-active {background-position:0 -37.5px; color:White;}
 
-#content {background-color:#23252E; float:left; padding-left: 12px; padding-bottom:10px; font-size:14px; width: 670px;}
+#content {background-color:#23252E; float:left; margin-left:-5px; padding-left: 12px; font-size:14px; width: 670px;}
 #content h1 {font-size:150%;}
 #content h4 {font-size:100%;}
 #content h4 span {font-weight:normal; color:#93858A;}
@@ -29,40 +29,40 @@
 
 #content h1#em {background-color:black; padding:10px 0 10px 10px; margin:10px 15px 10px 0;}
 #content form#caselist hr {border:1px dashed white;}
-#content form#caselist {background-color:#343338; width:635px; margin-top:-40px; padding:10px; height:760px; overflow-y: auto;}
+#content form#caselist {background-color:#343338; height:600px; width:635px; margin-top:-40px; padding:10px; overflow-y: auto;}
 #content form#caselist table {padding-bottom:40px; margin-left:10px; margin-top:10px; width:590px; border-bottom:dashed 1px white;}
 #content form#caselist table a {color:#AA252B;}
 #content form#caselist table a:hover {color:Black;}
 
-#content .feedback {margin:0px 5px; color:#B5B5B5; width:620px;}
+#content .feedback {margin:0px; color:#B5B5B5; width:630px; height:660px;}
 #content .feedback td {padding:5px;}
-#content .feedback p {color:red; font-size:11px; text-align:right; padding-right:40px; margin-top:-15px;}
+#content .feedback p {color:red; font-size:11px; text-align:right; padding-right:40px;}
 #content .feedback table {}
 #content .feedback .btn {background:url("design/Button-BG.png") 0 0 no-repeat; padding:5px 25px;}
 #content .feedback .btn a {color:#878787; text-decoration:none;}
 #content .feedback .btn a:hover {color:Red;}
 #content .feedback td.newcase {padding-left:135px;}
 
-#content #profile {width:650px; color:#878787;}
+#content #profile {width:650px; color:#878787; height: 650px;}
 #content #profile td {padding:15px;}
 #content #profile .btn {background:url("design/Button-BG.png") 0 0 no-repeat; padding:5px 25px; margin-left:520px;}
-#content #profile .btn a {color:#878787; text-decoration:none;}
+#content #profile .btn a {color:black; text-decoration:none;}
 #content #profile .btn a:hover {color:Red;}
 #content #profile td.show {color:White;}
 
-#content #password {width:650px; color:#878787;}
+#content #password {width:650px; color:#878787; height: 650px; padding-bottom:300px;}
 #content #password td {padding:15px;}
 #content #password td#move {padding-left:223px;}
 #content #password .btn {background:url("design/Button-BG.png") 0 0 no-repeat; padding:5px 25px;}
 #content #password .btn a {color:#878787; text-decoration:none;}
 #content #password .btn a:hover {color:Red;}
 
-#content #view_case {overflow-y:auto;}
-#content #view_case table {width:650px;}
+#content #view_case {overflow-y:auto; height:700px;}
+#content #view_case table {width:670px; margin-top:10px;}
 #content #view_case table th {font-size:16px; text-align: left;}
 #content #view_case table a {color:red; text-decoration:none;}
 #content #view_case table a:hover, #content #view_case table a:visited {color:#83857C;}
-#content #view_case_form {margin:20px 10px; width:650px; font-size:16px; font-weight:bold;}
+#content #view_case_form {margin:0px; width:630px; font-size:16px; font-weight:bold; padding:10px;}
 #content #view_case_form div {float:left;}
 #content #view_case_form form#search {float:right; padding-right:20px;}
 
@@ -72,7 +72,7 @@
 #number {color:red;} #number a:hover, #number a:visited {color:#83857C;}
 
     .domtab {
-    width:655px;
+    width:700px;
     margin-top: 0px;
     margin-left:-20px;
     }
@@ -115,13 +115,13 @@
       div.domtab-content {
       float: right;
       clear:both;
-      width:355px;
-      padding:5px; margin-top:-265px;
+      width:400px; height:720px; overflow-y:auto;
+       margin-top:-253px;
     }
       
 #basic-accordian{
   padding-top:5px;
-  width:390px;
+  width:375px;
   z-index:2;
 }
 
@@ -140,10 +140,9 @@
 .accordion_child{
   padding:5px;
   background:#211F20;
-  width:380px;
 }
 .accordion_child table {
-  width:380px;
+  width:375px;
   font-size:12px;
   text-align:center;
 }

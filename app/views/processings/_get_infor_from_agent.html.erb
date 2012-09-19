@@ -6,7 +6,7 @@
   <div id="test-content2" style="display: none;"><!--DIV which show/hide on click of header-->
   
   	<!--This DIV is for inline styling like padding...-->
-    <div class="accordion_child" style="height: 100px;">
+    <div class="accordion_child">
         <form name="response" method="post" action="/create_response?type=forward" >     
 		   <table><th></th><th>Mr/Ms</th><th>First Name</th><th>Last Name</th><th>Title</th><th>User Group</th>
 			<% @get_infos.each_with_index do |staff,index| %>   
@@ -15,7 +15,7 @@
 		    else
 		      checked = false
 		    end %>
-		   <tr><td><%= radio_button_tag(:response_to, staff.user_id, checked) %></td>
+		   <tr class="color"><td><%= radio_button_tag(:response_to, staff.user_id, checked) %></td>
 		   	   <td><%= staff.gender%></td>
 			   <td><%= staff.first_name%></td>
 			   <td><%= staff.last_name%></td>
@@ -26,7 +26,7 @@
 		    <table>    	
 		    	<tr><td><%= hidden_field_tag(:case_id, @case_id)%></td></tr>
 			    <tr><td><%= hidden_field_tag(:processing_id, @processing_id)%></td></tr>	
-			    <tr><td><%= text_area_tag "content","",:autofocus => true, :style=>"background:white; width:500px; height:300px;"%></td></tr>
+			    <tr><td><%= text_area_tag "content","",:autofocus => true, :style=>"background:white; width:350px; height:150px;"%></td></tr>
 			    <tr><td><%= submit_tag "Submit"%></td></tr>
 		    </table>
 		</form>	

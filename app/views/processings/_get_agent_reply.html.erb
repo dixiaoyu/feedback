@@ -6,7 +6,7 @@
   <div id="test-content1" style="display: none;"><!--DIV which show/hide on click of header-->
   
   	<!--This DIV is for inline styling like padding...-->
-    <div class="accordion_child" style="height: 100px;">
+    <div class="accordion_child">
         <form name="response" method="post" action="/create_response?type=forward" >
 		   <table>
 		   	<th></th><th>Company Name</th><th>Branch Name</th><th>Mr/Ms</th><th>First Name</th><th>Last Name</th>
@@ -16,7 +16,7 @@
 			<% else %>
 			  <% checked=false %>
 			<% end %>
-			<tr><td><%= radio_button_tag(:response_to, poc.user_id, checked)%></td>
+			<tr class="color"><td><%= radio_button_tag(:response_to, poc.user_id, checked)%></td>
 				<td><%= poc.company_name%></td>
 				<td><%= poc.branch_name%></td>
 				<td><%= poc.gender%></td>
@@ -25,7 +25,7 @@
 			<% end %>	
 			<% @agent_others.each do |staff| %> 
 			  <% if staff.user_id !=@agent_pocs.first.user_id%>
-		   <tr><td><%= radio_button_tag(:response_to, staff.user_id) %></td>
+		   <tr class="color"><td><%= radio_button_tag(:response_to, staff.user_id) %></td>
 		   	   <td><%= staff.company_name%></td>
 		   	   <td><%= staff.branch_name%></td>
 		   	   <td><%= staff.gender%></td>
@@ -37,7 +37,7 @@
 		    <table> 	
 		    <table>  
 		        <tr><td><%= hidden_field_tag(:case_id, @case_id)%></td></tr>	  	
-			    <tr><td><%= text_area_tag "content","",:autofocus => true, :style=>"background:white; width:500px; height:300px;"%></td></tr>
+			    <tr><td><%= text_area_tag "content","",:autofocus => true, :style=>"background:white; width:350px; height:150px;"%></td></tr>
 			    <tr><td><%= submit_tag "Submit"%></td></tr></table>
 		</form>		
     </div>

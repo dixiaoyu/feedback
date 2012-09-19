@@ -6,8 +6,8 @@
 </head>
 <body onload="new Accordian('basic-accordian',5,'header_highlight');">
 
-  <div id="main">
-   <%= image_tag "NATAS.png", :style=>"padding-left:200px; padding-top:5px;" %>
+   <%= image_tag "NATAS.png", :style=>"padding-left:177px;" %>
+   
    <script Language="JavaScript">
 <!-- 
 function Blank_TextField_Validator()
@@ -40,25 +40,23 @@ return (true);
     <ul>
       <% groups=["admin","customer","natas"]%>
       <% if current_user.user_group=="natas"%>
-      <li><%= link_to "HOME", staff_view_case_path(:user_id=>current_user.user_id) %></li>
+      <li style="margin-left: 65px; margin-right: 40px;"><%= link_to "HOME", staff_view_case_path(:user_id=>current_user.user_id) %></li>
       <% elsif current_user.user_group=="customer" %>
       <li><%= link_to "HOME", cus_home_path(:user_id=>current_user.user_id) %></li>
       <li><%= link_to "PROFILE", cus_detail_path(:user_id=>current_user.user_id) %></li>      
       <% elsif !groups.include?(current_user.user_group) %>
-      <li><%= link_to "HOME", staff_view_case_path(:user_id=>current_user.user_id) %></li>
+      <li style="margin-left: 65px; margin-right: 40px;"><%= link_to "HOME", staff_view_case_path(:user_id=>current_user.user_id) %></li>
       <% end %>
-      <li><%= link_to "CHANGE PASSWORD", reset_pwd_path, :class=>"menu-active" %></li>
+      <li><%= link_to "CHANGE PASSWORD", reset_pwd_path %></li>
       <li id="account"><span>WELCOME CUSTOMER!</span><br /><%= link_to "LOG OUT", signout_path %></li>
     </ul>
    </div>
    
    <div id="cols">
    	<%= yield %>
- </div><!-- end of cols -->
+   </div><!-- end of cols -->
    
-  </div>
-  
-<%= debug(params) if Rails.env.development? %>
+  <%= image_tag "footer.png", :style=>"padding-left:177px;" %>
 
 </body>
 </html>

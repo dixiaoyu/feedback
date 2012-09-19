@@ -18,10 +18,10 @@
     <div id="content">
      <h1 id="em">Agency</h1>
     <% if params[:case_id]!=nil && params[:direct].nil?%>
-      <form name="agency" method="post" action="/case_edit?status=1" style="overflow-y: auto;" >
+      <form name="agency" method="post" action="/case_edit?status=1" style="overflow-y: auto; height: 650px;" >
       	<%= hidden_field_tag(:case_id, params[:case_id])%>   
     <% else %>
-      <form name="agency" method="post" action="/cus_new_case?status=1" style="overflow-y: auto;">
+      <form name="agency" method="post" action="/cus_new_case?status=1" style="overflow-y: auto; height: 650px;">
     <% end %>  
    
     <table width="650px" style="text-align: center; font-size: 16px;" cellspacing="10" cellpadding="10">  

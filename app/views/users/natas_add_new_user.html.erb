@@ -16,7 +16,7 @@ return (true);
 <%= debug current_user %>-->
    <div id="menu">
     <ul>
-      <li><%= link_to "HOME", staff_view_case_path(:user_id=>current_user.user_id), :class=>"menu-active" %></li>
+      <li style="margin-left: 65px; margin-right: 40px;"><%= link_to "HOME", staff_view_case_path(:user_id=>current_user.user_id), :class=>"menu-active" %></li>
       <li><%= link_to "CHANGE PASSWORD", reset_pwd_path %></li>
       <li id="account"><span>WELCOME NATAS!</span><br /><%= link_to "LOG OUT", signout_path %></li>
     </ul>
@@ -43,7 +43,7 @@ return (true);
     <% end%>
     <p id="demo" style="font-size:11px; color:red;"></p>	
       <p>* denotes compulsory fields. </p>
-      <table cellspacing="10" width="650px">
+      <table cellspacing="10" width="650px" height="545px">
       	<tr><td>*User Name:</td><td><%= text_field_tag :user_id %></td><td>MR/MS:</td><td><%= select_tag(:gender, options_for_select([['MR', 1], ['MS', 2]])) %></td></tr>
       	<tr><td>*Password:</td><td><%= password_field_tag :pwd %></td><td>*Confirmation:</td><td><%= password_field_tag :re_pwd %></td></tr>
       	<tr><td>*First Name:</td><td><%= text_field_tag :first_name %></td><td>*Last Name:</td><td><%= text_field_tag :last_name %></td></tr>

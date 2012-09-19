@@ -5,9 +5,9 @@
       <li><%= link_to "HOME", cus_home_path %></li>
       <li><%= link_to "PROFILE", cus_detail_path(:user_id=>current_user.user_id) %></li>
       <% elsif current_user.user_group=="natas"%>
-      <li><%= link_to "HOME", staff_view_case_path(:user_id=>current_user.user_id) %></li>
+      <li style="margin-left: 65px; margin-right: 40px;"><%= link_to "HOME", staff_view_case_path(:user_id=>current_user.user_id) %></li>
       <% elsif !groups.include?(current_user.user_group) %>
-      <li><%= link_to "HOME", staff_view_case_path(:user_id=>current_user.user_id) %></li>
+      <li style="margin-left: 65px; margin-right: 40px;"><%= link_to "HOME", staff_view_case_path(:user_id=>current_user.user_id) %></li>
       <% end %>
       <li><%= link_to "CHANGE PASSWORD", reset_pwd_path, :class=>"menu-active" %></li>
       <li id="account"><span>WELCOME CUSTOMER!</span><br /><%= link_to "LOG OUT", signout_path %></li>
@@ -41,7 +41,7 @@
 	  </ul>
     </div>
 
-    <div id="content">
+    <div id="content" style="margin-left: -10px;">
      <h1 id="em">My Password</h1>
      <%= form_for(:users, :url=>:update_pwd) do |f| %>
      <table id="password">

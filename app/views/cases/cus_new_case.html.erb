@@ -22,12 +22,12 @@
 		<tr><td>Title:</td><td><%= text_field_tag :title%></td></tr>
     	<tr><td style="width:260px;">Nature Of Complaint:</td>
     	    <td><%= select_tag(:nature, options_for_select(CaseCategory.all.collect {|p| [ p.name.strip(), p.id ] })) %></td></tr>
-		<tr><td>Date Of Incident:<br />DD/MM/YYYY</td><td><%=date_select "incident","user",:start_year=>2010, :end_year=>Time.now.year.to_i, :default=>100.years.from_now%></td></tr>
-        <tr><td colspan="2">Description:</td></tr>
-        <tr><td colspan="2"><%= text_area_tag :complaint, nil,:style=>"width:560px; height:180px; overflow:hidden;" %></td></tr>
-        <tr><td><%= submit_tag "SEND" %></td>
-			<td><p>Please do not exceed 1000 words</p></td>
-		</tr>
+		<tr><td>Date Of Incident:</td><td><%=date_select "incident","user",:start_year=>2010, :end_year=>Time.now.year.to_i, :default=>100.years.from_now%></td></tr>
+        <tr><td colspan="2">Description:<br />
+            <br /><%= text_area_tag :complaint, nil,:style=>"width:580px; height:180px; overflow:hidden;" %>
+        	<br /><p>Please do not exceed 1000 words</p>
+        </td></tr>
+        <tr><td colspan="2"><%= submit_tag "SEND" %></td></tr>
 	  </table>
 	 </form>
     </div><!-- end of content -->
